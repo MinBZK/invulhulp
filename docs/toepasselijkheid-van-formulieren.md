@@ -46,9 +46,9 @@ dan de vraag hier.
 Twee dingen die makkelijk misgaan bij het formuleren van een triggervraag:
 
 1. **Inkoop telt mee.** De verplichting rust op de instantie die de voorziening *publiceert of
-   aanbiedt*, ook bij ingekochte SaaS. Een leveranciersverklaring (VPAT) ontslaat MinFin niet
+   aanbiedt*, ook bij ingekochte SaaS. Een leveranciersverklaring (VPAT) ontslaat MinBZK niet
    van de plicht zelf een verklaring te publiceren. De vraag moet dus gaan over "levert dit
-   project een voorziening op die MinFin aanbiedt", niet over "bouwen we zelf iets".
+   project een voorziening op die MinBZK aanbiedt", niet over "bouwen we zelf iets".
 2. **Verifieer vóór gebruikersgerichte tekst.** Conform de waarschuwing in
    [`sporen-en-roadmap.md`](sporen-en-roadmap.md) §4.2: bovenstaande verwijzingen zijn de
    aanleiding, niet de inhoud. Toets ze tegen de actuele tekst van het besluit en
@@ -244,7 +244,7 @@ dossiernummer, logging, pseudoniemen)? · gaat het (ook) om eigen medewerkers? �
 gegevens uit een basisregistratie gebruikt?
 
 Dezelfde valkuil als in §2 bij inkoop: de vraag gaat over wat het project *oplevert of
-aanbiedt*, niet over wat MinFin zelf bouwt.
+aanbiedt*, niet over wat MinBZK zelf bouwt.
 
 **"Niet van toepassing" is een product, geen leegte.** Verplichte motivatie, plus wie en
 wanneer. Voor het n.v.t. verklaren van een DPIA hoort een tweede paar ogen (FG of privacy

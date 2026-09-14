@@ -16,7 +16,7 @@ them here. To update, re-copy from the upstream repo at a new commit and bump th
 > the YAML, the overlay, and the output `public/forms/<name>.json` together. The
 > "Upstream path" column is the real source. Content standards: `urn:nl:prescan`
 > (Pre-scan DPIA v2.0) and `urn:nl:iama` (IAMA v2) respectively. Note `iama` is a
-> **new, separate** form; the hand-written MinFin AIIA (`aiia`) is unrelated to this
+> **new, separate** form; the hand-written MinBZK AIIA (`aiia`) is unrelated to this
 > vendored source and is not generated.
 
 - Upstream repository: https://github.com/MinBZK/par-dpia-form

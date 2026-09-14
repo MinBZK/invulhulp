@@ -11,8 +11,8 @@
           <nldd-text size="sm" class="invulhulp-footer__text">
             Dit is een bètaversie van dit hulpmiddel. Vragen of feedback?
             <nldd-link
-              href="mailto:innovatiemanagamentfinancien@minfin.nl">
-            innovatiemanagamentfinancien@minfin.nl</nldd-link>
+              href="mailto:innovatiemanagement@minbzk.nl">
+            innovatiemanagement@minbzk.nl</nldd-link>
           </nldd-text>
       </nldd-banner>
     </div>

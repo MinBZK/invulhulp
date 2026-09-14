@@ -393,7 +393,7 @@ async def retrieve(
 
 ONTOLOGY_SYSTEM_PROMPT = (
     "Je bent een assistent die documenten analyseert voor compliance- en "
-    "projectdocumentatie van de Nederlandse overheid (Ministerie van Financiën).\n\n"
+    "projectdocumentatie van de Nederlandse overheid (Ministerie van Binnenlandse Zaken en Koninkrijksrelaties).\n\n"
     "Lees het document en haal de feitelijke informatie eruit in een gestructureerd "
     "JSON-overzicht. Verzin NIETS — gebruik alleen wat letterlijk in het document staat.\n\n"
     "Geef je antwoord uitsluitend als geldig JSON met deze structuur:\n"

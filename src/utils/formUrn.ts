@@ -8,11 +8,11 @@
  *
  * Upstream pint `schemas/schema_instruments.json` dat vast op
  * `^urn:nl:aivt:tr:[a-z]+:[0-9]+\.[0-9]+` — authority `aivt`, registry `tr`.
- * Deze tool mint in de authority van de uitgevende organisatie (`minfin`,
+ * Deze tool mint in de authority van de uitgevende organisatie (`bzk`,
  * registry `tr`), zodat de identifiers dezelfde vorm hebben en naast elkaar
  * kunnen bestaan zonder in andermans naamruimte te schrijven:
  *
- *     urn:nl:minfin:tr:dpia:3.0
+ *     urn:nl:bzk:tr:dpia:3.0
  *
  * Het instrument-segment is het formulier-id, het versiesegment de `version`
  * van het formulier. Formulieren die nog niet bestaan (placeholders in
@@ -30,7 +30,7 @@
 export const FORM_URN_PATTERN = /^urn:nl:[a-z]+:[a-z]+:[a-z]+:[0-9]+\.[0-9]+$/
 
 /** Onze eigen authority + registry. */
-export const FORM_URN_AUTHORITY = 'minfin'
+export const FORM_URN_AUTHORITY = 'bzk'
 export const FORM_URN_REGISTRY = 'tr'
 
 /** Versiesegment voor aangekondigde formulieren die nog geen JSON hebben. */

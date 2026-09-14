@@ -4,7 +4,7 @@ Gebruikers zoeken voor het delen van dossiers.
 Anders dan admin_users.py is dit endpoint beschikbaar voor iedere ingelogde
 gebruiker (de globale require_user-gate in main.py volstaat): wie een dossier
 wil delen moet een collega kunnen opzoeken. Het hergebruikt de Keycloak
-Admin-API-client van admin_users (service account findocs-admin), maar geeft
+Admin-API-client van admin_users (service account rijksdocs-admin), maar geeft
 alleen id/naam/e-mail terug — geen rollen of status, zodat de volledige
 gebruikersadministratie niet uitlekt naar niet-beheerders.
 """

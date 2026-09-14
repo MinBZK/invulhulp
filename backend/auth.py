@@ -8,7 +8,7 @@ identity in a signed, HttpOnly session cookie. See ./keycloak for the IdP.
 Environment variables:
     OIDC_DISCOVERY_URL          — Keycloak .well-known/openid-configuration URL
                                   (back-channel reachable from the backend)
-    OIDC_CLIENT_ID              — confidential client id (default: findocs-bff)
+    OIDC_CLIENT_ID              — confidential client id (default: rijksdocs-bff)
     OIDC_CLIENT_SECRET          — client secret
     OIDC_REDIRECT_URI           — public callback URL (browser-reachable)
     OIDC_POST_LOGIN_REDIRECT    — where to send the browser after login
@@ -25,7 +25,7 @@ from starlette.requests import HTTPConnection
 
 OIDC_DISCOVERY_URL = os.environ.get(
     "OIDC_DISCOVERY_URL",
-    "http://localhost:8081/realms/findocs/.well-known/openid-configuration",
+    "http://localhost:8081/realms/rijksdocs/.well-known/openid-configuration",
 )
 # Dev bypass: when started with `python main.py --dev`, skip Keycloak entirely
 # and treat every request as a fixed local developer. NEVER enable in production.
@@ -49,7 +49,7 @@ SCOPE_ROLES = {"projectmanagement"}
 APP_ROLES = {"gebruiker", "beheerder"} | SCOPE_ROLES
 ADMIN_ROLE = "beheerder"
 
-OIDC_CLIENT_ID = os.environ.get("OIDC_CLIENT_ID", "findocs-bff")
+OIDC_CLIENT_ID = os.environ.get("OIDC_CLIENT_ID", "rijksdocs-bff")
 OIDC_CLIENT_SECRET = os.environ.get("OIDC_CLIENT_SECRET", "dev-secret-change-me")
 OIDC_REDIRECT_URI = os.environ.get(
     "OIDC_REDIRECT_URI", "http://localhost:8080/api/auth/callback"
@@ -88,7 +88,7 @@ async def callback(request: Request):
     except OAuthError as exc:
         raise HTTPException(status_code=401, detail=f"Authenticatie mislukt: {exc.error}")
     claims = token.get("userinfo") or {}
-    # Realm-rollen komen via de "roles" protocol mapper op de findocs-bff
+    # Realm-rollen komen via de "roles" protocol mapper op de rijksdocs-bff
     # client in het ID-token; fallback op de standaard realm_access claim.
     raw_roles = claims.get("roles") or (claims.get("realm_access") or {}).get("roles") or []
     request.session["user"] = {

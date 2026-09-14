@@ -1,25 +1,25 @@
 {
   "id": "psa",
   "version": "1.0",
-  "urn": "urn:nl:minfin:tr:psa:1.0",
+  "urn": "urn:nl:bzk:tr:psa:1.0",
   "title": "Project Start Architectuur (PSA)",
   "source": {
     "instrument": "Project Start Architectuur (PSA)",
-    "publisher": "Ministerie van Financiën",
+    "publisher": "Ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
     "reference": "Intern PSA-sjabloon, opgezet langs de lagen van het NORA-vijflaagsmodel (organisatie, informatie, applicatie, technologie) plus wet- en regelgeving, beveiliging en privacy",
     "derivation": "original",
     "note": "Digitalisering van het eigen PSA-sjabloon; geen extern invulinstrument als origineel."
   },
-  "aiContext": "Dit is een Project Start Architectuur (PSA) voor het Ministerie van Financiën: het beschrijft de organisatie-, informatie-, applicatie- en technologielaag na afronding van het project, plus wet- en regelgeving, beveiliging en privacy. Schrijf in architectuur- en compliance-termen.",
+  "aiContext": "Dit is een Project Start Architectuur (PSA) voor het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties: het beschrijft de organisatie-, informatie-, applicatie- en technologielaag na afronding van het project, plus wet- en regelgeving, beveiliging en privacy. Schrijf in architectuur- en compliance-termen.",
   "meta": {
     "homeComponent": "HomePage",
     "exportLabel": "PSA",
     "docTitle": "Project Start Architectuur",
-    "footerLabel": "PSA – MinFin",
+    "footerLabel": "PSA – MinBZK",
     "filename": "PSA.pdf",
     "systemNamePlaceholder": "Bijv. Vervanging declaratiesysteem",
     "homeContent": {
-      "notice": "Een PSA is verplicht als onderdeel van het werken onder architectuur bij MinFin. De PSA wordt opgesteld door architecten in nauwe samenwerking met het projectteam en vereist goedkeuring van de Architectuurboard Financiën en het MT CDIO.",
+      "notice": "Een PSA is verplicht als onderdeel van het werken onder architectuur bij MinBZK. De PSA wordt opgesteld door architecten in nauwe samenwerking met het projectteam en vereist goedkeuring van de Architectuurboard BZK en het MT CDIO.",
       "description": "De Project Start Architectuur (PSA) beschrijft in globale termen hoe de organisatorische, informatie-, applicatie- en technologielaag eruitzien na het project. De PSA is één van de voorwaarden om te starten met een project en geeft richting aan de uitvoering.",
       "steps": [
         "Over de verandering: aanleiding, opdracht, afbakening en relaties met andere projecten",
@@ -116,14 +116,14 @@
             {
               "id": "psa_b.beleidskaders",
               "text": "Beleidskaders",
-              "guidance": "Geef de beleidskaders die van toepassing zijn, inclusief informatiebeveiliging en het Privacybeleid van het Ministerie van Financiën.",
+              "guidance": "Geef de beleidskaders die van toepassing zijn, inclusief informatiebeveiliging en het Privacybeleid van het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties.",
               "type": "text",
               "importance": "mandatory"
             },
             {
               "id": "psa_b.architectuurkaders",
               "text": "Architectuurkaders, -voorschriften en standaarden",
-              "guidance": "Noem de Enterprise Architectuur Principes Financiën, NORA, Forum Standaardisatie 'Pas toe of leg uit'-standaarden en eventuele specifieke kaders.",
+              "guidance": "Noem de Enterprise Architectuur Principes BZK, NORA, Forum Standaardisatie 'Pas toe of leg uit'-standaarden en eventuele specifieke kaders.",
               "type": "text",
               "importance": "mandatory"
             }
@@ -282,7 +282,7 @@
             {
               "id": "psa_e.logging_monitoring",
               "text": "Logging en monitoring",
-              "guidance": "Beschrijf de aanpak voor logging en monitoring conform het Financiën-beleid.",
+              "guidance": "Beschrijf de aanpak voor logging en monitoring conform het BZK-beleid.",
               "type": "text",
               "importance": "mandatory"
             },
@@ -324,7 +324,7 @@
             {
               "id": "psa_f.ea_toetsing",
               "text": "Toetsing aan Enterprise Architectuur Principes en architectuurafwijkingen",
-              "guidance": "Beschrijf hoe invulling is gegeven aan de EA-principes Financiën en wat de eventuele architectuurafwijkingen zijn.",
+              "guidance": "Beschrijf hoe invulling is gegeven aan de EA-principes BZK en wat de eventuele architectuurafwijkingen zijn.",
               "type": "text",
               "importance": "mandatory"
             },

@@ -1,26 +1,26 @@
 {
   "id": "ppm",
   "version": "1.0",
-  "urn": "urn:nl:minfin:tr:ppm:1.0",
+  "urn": "urn:nl:bzk:tr:ppm:1.0",
   "title": "PPM Projectplan",
   "source": {
     "instrument": "PPM-projectplan",
-    "publisher": "Ministerie van Financiën",
+    "publisher": "Ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
     "reference": "Intern projectmanagement-sjabloon (projectdefinitie, business case, aanpak, organisatie, producten)",
     "derivation": "original",
     "note": "Digitalisering van het eigen projectplansjabloon; geen extern origineel."
   },
-  "aiContext": "Dit is een PPM-projectplan voor het Ministerie van Financiën: het beschrijft de projectdefinitie, business case, aanpak, projectorganisatie en de op te leveren producten. Schrijf in formele projectmanagementtermen.",
+  "aiContext": "Dit is een PPM-projectplan voor het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties: het beschrijft de projectdefinitie, business case, aanpak, projectorganisatie en de op te leveren producten. Schrijf in formele projectmanagementtermen.",
   "meta": {
     "homeComponent": "HomePage",
     "exportLabel": "PPM Projectplan",
     "docTitle": "PPM Projectplan",
-    "footerLabel": "PPM Projectplan – MinFin",
+    "footerLabel": "PPM Projectplan – MinBZK",
     "filename": "PPM-Projectplan.pdf",
     "systemNamePlaceholder": "Bijv. Vervanging declaratiesysteem",
     "homeContent": {
       "notice": "Het projectplan vereist goedkeuring van de opdrachtgever, manager planning resources (business en IT), PSA-architect, informatiebeveiliging (CISO/ISO), privacy officer en controller. Stem de planning af met alle betrokkenen voorafgaand aan indiening bij portfoliomanagement.",
-      "description": "Het PPM Projectplan legt de projectdefinitie, business case, aanpak en organisatie vast. Het is één van de verplichte documenten bij de start van een project in het projectportfolioproces van MinFin en vormt de basis voor sturing door de stuurgroep.",
+      "description": "Het PPM Projectplan legt de projectdefinitie, business case, aanpak en organisatie vast. Het is één van de verplichte documenten bij de start van een project in het projectportfolioproces van MinBZK en vormt de basis voor sturing door de stuurgroep.",
       "steps": [
         "Projectdefinitie: achtergrond, doelstellingen, scope en afhankelijkheden",
         "Business case: redenen, overwogen opties, kosten en baten, fasering",

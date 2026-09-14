@@ -77,7 +77,7 @@
         </h2></nldd-title>
         <nldd-text color="inherit" class="first-run__lead">
           Upload wat er al ligt: notulen, een projectplan, een brainstorm of een architectuurschets.
-          FinDocs leest ze en vult daarna de formulieren van dit dossier voor je in — elk antwoord met
+          RijksDocs leest ze en vult daarna de formulieren van dit dossier voor je in — elk antwoord met
           een verwijzing naar de passage waar het vandaan komt. Jij controleert, past aan en stelt vast.
         </nldd-text>
 

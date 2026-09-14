@@ -3,7 +3,7 @@
   "form": {
     "id": "prescandpia",
     "version": "2.0",
-    "urn": "urn:nl:minfin:tr:prescandpia:2.0",
+    "urn": "urn:nl:bzk:tr:prescandpia:2.0",
     "title": "Pre-scan DPIA",
     "source": {
       "instrument": "Pre-scan DPIA (urn:nl:prescan)",
@@ -14,12 +14,12 @@
       "derivation": "generated",
       "note": "Gegenereerd met `npm run forms:build`; niet handmatig bewerken. Elke vraag draagt de upstream task-id als officialId. Zie docs/SCHEMA_HARMONIZATION.md."
     },
-    "aiContext": "Dit is een Pre-scan DPIA volgens het officiële model van MinBZK (urn:nl:prescan v2.0) voor het Ministerie van Financiën: een snelle toets die op basis van risicofactoren (o.a. AP/EDPB-criteria, internationale doorgiften, basisregistraties, algoritmes en kinderrechten) bepaalt of een volledige DPIA — en eventueel een DTIA of IAMA — nodig is. Schrijf juridisch nauwkeurig in privacy- en AVG-terminologie.",
+    "aiContext": "Dit is een Pre-scan DPIA volgens het officiële model van MinBZK (urn:nl:prescan v2.0) voor het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties: een snelle toets die op basis van risicofactoren (o.a. AP/EDPB-criteria, internationale doorgiften, basisregistraties, algoritmes en kinderrechten) bepaalt of een volledige DPIA — en eventueel een DTIA of IAMA — nodig is. Schrijf juridisch nauwkeurig in privacy- en AVG-terminologie.",
     "meta": {
       "homeComponent": "HomePage",
       "exportLabel": "Prescan DPIA",
       "docTitle": "Pre-scan Data Protection Impact Assessment",
-      "footerLabel": "Prescan DPIA – MinFin",
+      "footerLabel": "Prescan DPIA – MinBZK",
       "filename": "Prescan-DPIA.pdf",
       "systemNamePlaceholder": "Bijv. Klantportaal persoonsgegevens v1",
       "homeContent": {

@@ -1,11 +1,11 @@
-# Design/opportunities: beslishulpen integreren in findocs
+# Design/opportunities: beslishulpen integreren in rijksdocs
 
 > **Status:** ontwerp / verkenning — geen commitment, geen code. Dit document beschrijft *hoe* we
-> externe **beslishulpen** (kwalificatietools) in findocs zouden kunnen integreren, met behoud van
+> externe **beslishulpen** (kwalificatietools) in rijksdocs zouden kunnen integreren, met behoud van
 > **eigenaarschap bij de bronrepo (MinBZK)**.
 >
 > Uitgangspunt (README, sectie "Beslishulpen"): een **beslishulp bepaalt de scope** (welke
-> instrumenten van toepassing zijn), **findocs vult ze in**. Dit ontwerp maakt die overdracht
+> instrumenten van toepassing zijn), **rijksdocs vult ze in**. Dit ontwerp maakt die overdracht
 > concreet *binnen een dossier*.
 >
 > Zie ook: [`AI-BOK-form-opportunities.md`](AI-BOK-form-opportunities.md),
@@ -22,12 +22,12 @@
 | Bron | Link | Wat |
 |---|---|---|
 | Beslishulp AI-verordening (gehost) | https://algoritmes.rijksapp.nl/beslishulp-ai-verordening | Vragenboom → is de AI-verordening van toepassing, welke rol, welke risicocategorie |
-| Broncode beslishulp | https://github.com/MinBZK/ai-verordening-beslishulp | MinBZK, EUPL-1.2, Vue (zelfde stack als findocs) — eigenaarschap blijft hier |
+| Broncode beslishulp | https://github.com/MinBZK/ai-verordening-beslishulp | MinBZK, EUPL-1.2, Vue (zelfde stack als rijksdocs) — eigenaarschap blijft hier |
 | IBDS beslishulpen-overzicht | https://realisatieibds.nl/page/view/ad94d97c-4d48-443c-aedd-235b2d0ca8b6/teamIBDS@ictu.nl | ICTU / team IBDS (Interbestuurlijke Datastrategie); verzamelt meerdere beslishulpen. Contact: teamIBDS@ictu.nl |
 
 ## 1. Doel en scope
 
-Integreer bestaande overheidsbeslishulpen zó dat de gebruiker binnen findocs:
+Integreer bestaande overheidsbeslishulpen zó dat de gebruiker binnen rijksdocs:
 1. een beslishulp **in een modal** opent en doorloopt;
 2. de uitkomst wordt **getransformeerd naar een classificatie** (bijv. "AI-verordening van
    toepassing · rol = aanbieder · risicocategorie = hoog");
@@ -41,11 +41,11 @@ uitkomst.
 ### Eerste doelwit
 - **Beslishulp AI-verordening** — gehost op https://algoritmes.rijksapp.nl/beslishulp-ai-verordening,
   broncode [MinBZK/ai-verordening-beslishulp](https://github.com/MinBZK/ai-verordening-beslishulp)
-  (EUPL-1.2, Vue — dezelfde stack als findocs).
+  (EUPL-1.2, Vue — dezelfde stack als rijksdocs).
 - Bredere bron: de **IBDS-overzichtspagina** (ICTU / team IBDS, zie sectie 0) verzamelt meerdere
   beslishulpen. Het ontwerp moet **meerdere** beslishulpen aankunnen (een register).
 
-## 2. Wat findocs al heeft (bouwstenen)
+## 2. Wat rijksdocs al heeft (bouwstenen)
 
 | Bouwsteen | Waar | Hergebruik |
 |---|---|---|
@@ -87,7 +87,7 @@ krijgen**. Drie opties, van meest naar minst geïntegreerd:
 
 ### Optie A — `postMessage` uit de iframe  ⭐ aanbevolen
 De beslishulp stuurt bij afronden `window.parent.postMessage({type: 'beslishulp:result', …})`.
-findocs luistert en verwerkt de payload.
+rijksdocs luistert en verwerkt de payload.
 - **Eigenaarschap:** blijft 100% upstream; wij consumeren alleen een event.
 - **Actie:** controleren of de MinBZK-beslishulp dit al uitzendt. Zo niet: een **kleine PR upstream**
   (EUPL, open source) die een gestructureerd resultaat post. Dat is *bijdragen aan*, niet *forken van*
@@ -96,7 +96,7 @@ findocs luistert en verwerkt de payload.
 
 ### Optie B — geëxporteerde uitkomst importeren
 De beslishulp heeft (of krijgt) een **export** (JSON en/of PDF). De gebruiker rondt af, exporteert,
-en importeert het bestand in findocs (of we lezen de download automatisch uit).
+en importeert het bestand in rijksdocs (of we lezen de download automatisch uit).
 - **Eigenaarschap:** volledig upstream; geen runtime-koppeling nodig.
 - **Nadeel:** extra handmatige stap; JSON-schema van de export moet stabiel zijn.
 
@@ -130,7 +130,7 @@ Een klein profiel op **dossier**-niveau (niet per form), bijv.:
 Opslag: naast de bestaande dossier-JSON (`dossierstore.py`), of als sectie in het dossierobject.
 
 ### (b) Opslaan als brondocument (bestaande weg)
-Bij afronden roept findocs de **bestaande** document-index-route aan:
+Bij afronden roept rijksdocs de **bestaande** document-index-route aan:
 `POST /api/documents/index` met
 `{ session_id, doc_id, name: "Beslishulp AI-verordening — 29-07-2026", content: <gestructureerde samenvatting> }`.
 Gevolg:
@@ -178,6 +178,6 @@ De uitkomst stuurt twee dingen aan, met **bestaande** mechanismen:
   UI/het opgeslagen document duidelijk blijven (zoals de bestaande beslishulpen zelf ook stellen).
 
 ---
-*Bronnen: MinBZK/ai-verordening-beslishulp (EUPL-1.2); IBDS/ICTU beslishulpen-overzicht; findocs
+*Bronnen: MinBZK/ai-verordening-beslishulp (EUPL-1.2); IBDS/ICTU beslishulpen-overzicht; rijksdocs
 `backend/docstore.py`, `backend/main.py` (`/api/documents/*`), `src/stores/assessmentStore.ts`,
 `public/forms/crossFormMappings.json`, `src/components/DossierDetail.vue`.*

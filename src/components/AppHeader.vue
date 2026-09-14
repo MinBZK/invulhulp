@@ -3,8 +3,8 @@
     <!-- Rijkslogo, woordmerk, hoofd- en utility-navigatie komen uit NLDD. De
          globale menubalk klapt onder lg zelf in achter de menuknop. -->
     <nldd-top-navigation-bar
-      logo-title="Ministerie van Financiën"
-      website-title="FinDocs"
+      logo-title="Ministerie van Binnenlandse Zaken en Koninkrijksrelaties"
+      website-title="RijksDocs"
     >
       <nldd-menu-bar slot="global" accessible-label="Hoofdnavigatie">
         <nldd-menu-bar-item

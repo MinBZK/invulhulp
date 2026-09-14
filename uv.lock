@@ -256,7 +256,7 @@ wheels = [
 ]
 
 [[package]]
-name = "findocs"
+name = "rijksdocs"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

@@ -1,9 +1,9 @@
 {
   "id": "dataethiek",
   "version": "1.0",
-  "urn": "urn:nl:minfin:tr:dataethiek:1.0",
+  "urn": "urn:nl:bzk:tr:dataethiek:1.0",
   "title": "Data-ethiektoets",
-  "aiContext": "Dit is een data-ethiektoets voor het Ministerie van Financiën, afgeleid van DAMA-DMBOK2 hoofdstuk 2 (Data Handling Ethics) en de daar gehanteerde Belmont-principes, vertaald naar gegevensverwerking: respect voor personen, weldoen (baten versus schade) en rechtvaardigheid. De toets is complementair aan de IAMA (grondrechten) en de AIIA (proportionaliteit) en legt de ethische afweging vast die daar impliciet blijft. Schrijf reflectief en concreet: benoem wie het raakt, waarom een keuze verdedigbaar is, en welke twijfels er zijn blijven bestaan. Vermijd geruststellende algemeenheden.",
+  "aiContext": "Dit is een data-ethiektoets voor het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties, afgeleid van DAMA-DMBOK2 hoofdstuk 2 (Data Handling Ethics) en de daar gehanteerde Belmont-principes, vertaald naar gegevensverwerking: respect voor personen, weldoen (baten versus schade) en rechtvaardigheid. De toets is complementair aan de IAMA (grondrechten) en de AIIA (proportionaliteit) en legt de ethische afweging vast die daar impliciet blijft. Schrijf reflectief en concreet: benoem wie het raakt, waarom een keuze verdedigbaar is, en welke twijfels er zijn blijven bestaan. Vermijd geruststellende algemeenheden.",
   "source": {
     "instrument": "DAMA-DMBOK2 — Data Management Body of Knowledge, 2nd Edition",
     "publisher": "DAMA International",
@@ -16,7 +16,7 @@
     "homeComponent": "HomePage",
     "exportLabel": "Data-ethiektoets",
     "docTitle": "Data-ethiektoets",
-    "footerLabel": "Data-ethiektoets – MinFin",
+    "footerLabel": "Data-ethiektoets – MinBZK",
     "filename": "Data-ethiektoets.pdf",
     "systemNamePlaceholder": "Bijv. Risicoselectie toeslagaanvragen",
     "homeContent": {

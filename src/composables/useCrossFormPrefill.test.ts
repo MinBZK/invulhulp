@@ -52,7 +52,7 @@ describe('prefillCopyAnswers: intake → aanbiedingsformulier', () => {
   it('carries the shared fields over verbatim', async () => {
     const { store, summary } = await openPafAfterIntake({
       'intake_a.contactpersoon': '<p>J. Jansen</p>',
-      'intake_a.email': '<p>j.jansen@minfin.nl</p>',
+      'intake_a.email': '<p>j.jansen@minbzk.nl</p>',
       'intake_b.aanleiding': '<p>Verplichting uit de Wet open overheid.</p>',
       'intake_b.doelstelling': '<p>Documenten sneller vindbaar maken.</p>',
       'intake_d.afhankelijkheden': '<p>Afhankelijk van het DMS-project.</p>',
@@ -60,7 +60,7 @@ describe('prefillCopyAnswers: intake → aanbiedingsformulier', () => {
 
     const answers = store.forms.aanbiedingsformulier.answers
     expect(answers['aa_a.contactpersoon']).toBe('<p>J. Jansen</p>')
-    expect(answers['aa_a.email']).toBe('<p>j.jansen@minfin.nl</p>')
+    expect(answers['aa_a.email']).toBe('<p>j.jansen@minbzk.nl</p>')
     expect(answers['aa_b.aanleiding']).toBe('<p>Verplichting uit de Wet open overheid.</p>')
     expect(answers['aa_b.doelstelling']).toBe('<p>Documenten sneller vindbaar maken.</p>')
     expect(answers['aa_c.afhankelijkheden']).toBe('<p>Afhankelijk van het DMS-project.</p>')

@@ -59,7 +59,7 @@ een regel in een index.
 ## 3. Kandidaat-beslishulpen
 
 Gerangschikt op of de uitkomst iets **scopet dat de tool al heeft**. Dat is het criterium uit de
-README: een beslishulp bepaalt de scope, findocs vult in. Een beslishulp die nergens in uitmondt
+README: een beslishulp bepaalt de scope, rijksdocs vult in. Een beslishulp die nergens in uitmondt
 is een quiz.
 
 ### 3.1 Tier 1 — de uitkomst bepaalt welk bestaand instrument van toepassing is

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://findocs/schemas/findocs-form.schema.json",
-  "title": "findocs FormConfig",
+  "$id": "https://rijksdocs/schemas/rijksdocs-form.schema.json",
+  "title": "rijksdocs FormConfig",
   "description": "Runtime shape consumed by src/services/formLoader.ts + src/models/Assessment.ts. The converter validates its output against this so a bad generation fails the build instead of at render time.",
   "type": "object",
   "required": ["id", "version", "title", "meta", "features", "navigation", "sections"],

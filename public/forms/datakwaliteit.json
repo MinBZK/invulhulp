@@ -1,9 +1,9 @@
 {
   "id": "datakwaliteit",
   "version": "1.0",
-  "urn": "urn:nl:minfin:tr:datakwaliteit:1.0",
+  "urn": "urn:nl:bzk:tr:datakwaliteit:1.0",
   "title": "Datakwaliteit-assessment",
-  "aiContext": "Dit is een datakwaliteit-assessment (DQA) voor het Ministerie van Financiën, afgeleid van DAMA-DMBOK2 hoofdstuk 13 (Data Quality) en uitgelijnd met ISO/IEC 25012 en de DAMA-NL DDQ-dimensies. Het beoordeelt per dataset of gegevensverwerking de kwaliteit langs de kerndimensies volledigheid, uniciteit, tijdigheid, validiteit, juistheid en consistentie, en legt datakwaliteitsregels, meetmethoden, bevindingen en verbeterafspraken vast. Schrijf in feitelijke, meetbare data-managementtermen: noem waar mogelijk aantallen, percentages, meetfrequenties en normen in plaats van kwalitatieve uitspraken.",
+  "aiContext": "Dit is een datakwaliteit-assessment (DQA) voor het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties, afgeleid van DAMA-DMBOK2 hoofdstuk 13 (Data Quality) en uitgelijnd met ISO/IEC 25012 en de DAMA-NL DDQ-dimensies. Het beoordeelt per dataset of gegevensverwerking de kwaliteit langs de kerndimensies volledigheid, uniciteit, tijdigheid, validiteit, juistheid en consistentie, en legt datakwaliteitsregels, meetmethoden, bevindingen en verbeterafspraken vast. Schrijf in feitelijke, meetbare data-managementtermen: noem waar mogelijk aantallen, percentages, meetfrequenties en normen in plaats van kwalitatieve uitspraken.",
   "source": {
     "instrument": "DAMA-DMBOK2 — Data Management Body of Knowledge, 2nd Edition",
     "publisher": "DAMA International",
@@ -16,7 +16,7 @@
     "homeComponent": "HomePage",
     "exportLabel": "Datakwaliteit-assessment",
     "docTitle": "Datakwaliteit-assessment (DQA)",
-    "footerLabel": "Datakwaliteit-assessment – MinFin",
+    "footerLabel": "Datakwaliteit-assessment – MinBZK",
     "filename": "Datakwaliteit-assessment.pdf",
     "systemNamePlaceholder": "Bijv. Basisadministratie debiteuren v2",
     "homeContent": {

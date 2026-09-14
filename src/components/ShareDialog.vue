@@ -21,7 +21,7 @@
           <nldd-search-field
             ref="searchEl"
             class="invulhulp-modal__input"
-            placeholder="bijv. Jansen of j.jansen@minfin.nl"
+            placeholder="bijv. Jansen of j.jansen@minbzk.nl"
             autocomplete="off"
             :value="query"
             @input="query = $event.detail.value; onQueryInput()"

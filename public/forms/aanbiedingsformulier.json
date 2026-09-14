@@ -1,26 +1,26 @@
 {
   "id": "aanbiedingsformulier",
   "version": "2.0",
-  "urn": "urn:nl:minfin:tr:aanbiedingsformulier:2.0",
+  "urn": "urn:nl:bzk:tr:aanbiedingsformulier:2.0",
   "title": "PPM Aanbiedingsformulier (Outline Businesscase)",
   "source": {
     "instrument": "PPM-aanbiedingsformulier (outline business case)",
-    "publisher": "Ministerie van Financiën",
+    "publisher": "Ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
     "version": "2.0",
     "reference": "Intern portfoliomanagement-sjabloon voor het portfoliobesluit",
     "derivation": "original",
     "note": "Digitalisering van het eigen aanbiedingsformulier; geen extern origineel."
   },
-  "aiContext": "Dit is een PPM-aanbiedingsformulier dat de outline business case voor een portfoliobesluit bij het Ministerie van Financiën beschrijft: belang, nut en noodzaak, afhankelijkheden, risico's, impact, planning, baten en kosten van een I-projectinitiatief. Schrijf zakelijk en onderbouwend.",
+  "aiContext": "Dit is een PPM-aanbiedingsformulier dat de outline business case voor een portfoliobesluit bij het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties beschrijft: belang, nut en noodzaak, afhankelijkheden, risico's, impact, planning, baten en kosten van een I-projectinitiatief. Schrijf zakelijk en onderbouwend.",
   "meta": {
     "homeComponent": "HomePage",
     "exportLabel": "Aanbiedingsformulier",
     "docTitle": "PPM Aanbiedingsformulier – Outline Businesscase",
-    "footerLabel": "Aanbiedingsformulier – MinFin",
+    "footerLabel": "Aanbiedingsformulier – MinBZK",
     "filename": "Aanbiedingsformulier.pdf",
     "systemNamePlaceholder": "Bijv. Vervanging declaratiesysteem",
     "homeContent": {
-      "notice": "Stuur het ingevulde aanbiedingsformulier naar portfoliomanagement@minfin.nl. Wees zo volledig en concreet mogelijk, geef context waar nodig, verwijs naar eventuele formele besluiten en voorkom afkortingen. Stem het formulier af met de vertegenwoordiger van het organisatieonderdeel in de portfolioboard, de adviesgroep en de opdrachtgever voordat het wordt ingediend.",
+      "notice": "Stuur het ingevulde aanbiedingsformulier naar portfoliomanagement@minbzk.nl. Wees zo volledig en concreet mogelijk, geef context waar nodig, verwijs naar eventuele formele besluiten en voorkom afkortingen. Stem het formulier af met de vertegenwoordiger van het organisatieonderdeel in de portfolioboard, de adviesgroep en de opdrachtgever voordat het wordt ingediend.",
       "description": "Met het PPM Aanbiedingsformulier (outline businesscase) wordt een I-projectinitiatief aangemeld voor opname in het centrale projectenportfolio van het Beleidsdepartement en/of budget aangevraagd voor de start van de initiatiefase.",
       "steps": [
         "Algemeen: projectidentificatie, contactgegevens en gevraagd besluit",

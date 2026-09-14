@@ -1,14 +1,14 @@
 {
   "id": "cloudtoets",
   "version": "1.0",
-  "urn": "urn:nl:minfin:tr:cloudtoets:1.0",
+  "urn": "urn:nl:bzk:tr:cloudtoets:1.0",
   "title": "Cloudtoets",
-  "aiContext": "Dit is de Handreiking gebruik clouddienst van het Ministerie van Financiën: de toetsing van voorgenomen gebruik van een clouddienst aan het Cloudbeleid Financiën, dat is gebaseerd op het Rijksbreed Cloudbeleid 2022 en het implementatiekader 'risicoafweging cloudgebruik'. Publieke, private, hybride en community clouddiensten zijn in scope. Schrijf in termen van cloudbeleid en informatiebeveiliging: clouddienst, cloud provider, cloud broker, rubricering, BBN, doorgifte, exitstrategie. Wees concreet over de beoogde dienst, de te verwerken gegevens en de provider; noem waar mogelijk het type clouddienst (public/private/hybride/community) en het servicemodel (IaaS/PaaS/SaaS/BaaS/BPaaS). Beantwoord de ja/nee-vragen in onderdeel 3 en 4 alleen als het brondocument daar uitsluitsel over geeft — deze vragen bepalen of een clouddienst is toegestaan.",
+  "aiContext": "Dit is de Handreiking gebruik clouddienst van het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties: de toetsing van voorgenomen gebruik van een clouddienst aan het Cloudbeleid BZK, dat is gebaseerd op het Rijksbreed Cloudbeleid 2022 en het implementatiekader 'risicoafweging cloudgebruik'. Publieke, private, hybride en community clouddiensten zijn in scope. Schrijf in termen van cloudbeleid en informatiebeveiliging: clouddienst, cloud provider, cloud broker, rubricering, BBN, doorgifte, exitstrategie. Wees concreet over de beoogde dienst, de te verwerken gegevens en de provider; noem waar mogelijk het type clouddienst (public/private/hybride/community) en het servicemodel (IaaS/PaaS/SaaS/BaaS/BPaaS). Beantwoord de ja/nee-vragen in onderdeel 3 en 4 alleen als het brondocument daar uitsluitsel over geeft — deze vragen bepalen of een clouddienst is toegestaan.",
   "source": {
     "instrument": "Handreiking gebruik clouddienst (Handreiking Toestaan Cloudtoepassing)",
-    "publisher": "Ministerie van Financiën — Adviescommissie Cloudgebruik (ACC)",
+    "publisher": "Ministerie van Binnenlandse Zaken en Koninkrijksrelaties — Adviescommissie Cloudgebruik (ACC)",
     "version": "1.0",
-    "reference": "assets/docs_project_management/Handreiking Toestaan Cloudtoepassingv1.0.docx; Cloudbeleid Ministerie van Financiën, gebaseerd op het Rijksbreed Cloudbeleid 2022 en het implementatiekader 'risicoafweging cloudgebruik'",
+    "reference": "assets/docs_project_management/Handreiking Toestaan Cloudtoepassingv1.0.docx; Cloudbeleid Ministerie van Binnenlandse Zaken en Koninkrijksrelaties, gebaseerd op het Rijksbreed Cloudbeleid 2022 en het implementatiekader 'risicoafweging cloudgebruik'",
     "derivation": "harmonized",
     "note": "Handmatig overgenomen uit het Word-origineel. De vier onderdelen, de ja/nee-vragen en de toelichtingen volgen het origineel; de invulvelden uit de Word-tabellen zijn omgezet naar losse vragen of naar een invulbare tabel. Toegevoegd ten opzichte van het origineel: de naam van de cloud provider (onderdeel 4), de checkbox met de vijf NIST-karakteristieken uit de definitie van een clouddienst (onderdeel 2), de optie 'Niet van toepassing (geen community clouddienst)' bij de twee community-cloudvragen, en de afsluitende subsectie 'Uitkomst en vervolg' die de conclusie vastlegt die het origineel in de leeswijzer beschrijft (rood/groen gearceerd). De go/no-go wordt niet automatisch berekend: de invuller stelt de uitkomst zelf vast. Bijlage A (activiteiten 1 t/m 12) en bijlage B (aan te leveren documenten) zijn opgenomen als checklists; de RACI-tabellen en de rollentabel uit het origineel zijn niet overgenomen omdat die geen invulvelden zijn."
   },
@@ -16,12 +16,12 @@
     "homeComponent": "HomePage",
     "exportLabel": "Cloudtoets",
     "docTitle": "Handreiking gebruik clouddienst",
-    "footerLabel": "Cloudtoets – MinFin",
+    "footerLabel": "Cloudtoets – MinBZK",
     "filename": "Cloudtoets.pdf",
     "systemNamePlaceholder": "Bijv. Documentopslag in Microsoft 365",
     "homeContent": {
       "notice": "Deze handreiking maakt het toetsingsproces inzichtelijk, maar vervangt het beleidsdocument niet en dekt mogelijk niet alle informatie af. Het is aan de indiener om de informatie te verstrekken die nodig is om een advies te kunnen uitbrengen. Een volledig ingevulde versie wordt door de Adviescommissie Cloudgebruik besproken; op basis van een gedeeltelijke invulling is feedback of hulp ook mogelijk.",
-      "description": "Met deze toets krijgt u inzicht of gegevens door een clouddienst mogen worden verwerkt en of clouddiensten van een beoogde cloud provider mogen worden afgenomen. De toets volgt het Cloudbeleid van het Ministerie van Financiën, dat is gebaseerd op het Rijksbreed Cloudbeleid 2022 en het implementatiekader 'risicoafweging cloudgebruik'. Publieke, private, hybride en community clouddiensten zijn in scope. Aan het gebruik van clouddiensten zijn restricties verbonden; die zitten in onderdeel 3 en 4. Wordt een of meer van die vragen negatief beantwoord, dan is het inschakelen van een clouddienst niet toegestaan. Zijn alle vragen positief beantwoord, dan is het inschakelen van een clouddienst in beginsel toegestaan.",
+      "description": "Met deze toets krijgt u inzicht of gegevens door een clouddienst mogen worden verwerkt en of clouddiensten van een beoogde cloud provider mogen worden afgenomen. De toets volgt het Cloudbeleid van het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties, dat is gebaseerd op het Rijksbreed Cloudbeleid 2022 en het implementatiekader 'risicoafweging cloudgebruik'. Publieke, private, hybride en community clouddiensten zijn in scope. Aan het gebruik van clouddiensten zijn restricties verbonden; die zitten in onderdeel 3 en 4. Wordt een of meer van die vragen negatief beantwoord, dan is het inschakelen van een clouddienst niet toegestaan. Zijn alle vragen positief beantwoord, dan is het inschakelen van een clouddienst in beginsel toegestaan.",
       "steps": [
         "Onderdeel 1 – Meta-informatie: indiener, verantwoordelijken en identificatie van de aanvraag",
         "Onderdeel 2 – Business problematiek/behoefte en de voorziene oplossing: type clouddienst en type service",
@@ -374,7 +374,7 @@
         {
           "id": "cte1",
           "title": "Op te leveren producten",
-          "description": "Indien gewenst kan de Adviescommissie Cloudgebruik (ACC) een pre-advies geven. Daartoe dienen de onderstaande producten te worden aangeleverd via ACC@minfin.nl.",
+          "description": "Indien gewenst kan de Adviescommissie Cloudgebruik (ACC) een pre-advies geven. Daartoe dienen de onderstaande producten te worden aangeleverd via ACC@minbzk.nl.",
           "questions": [
             {
               "id": "ct_e.producten",
@@ -398,7 +398,7 @@
             {
               "id": "ct_e.documenten_cloudadvies",
               "text": "Welke documenten zijn aangeleverd voor het cloudadvies (bijlage B)?",
-              "guidance": "Voor een volledig cloudadvies stuurt u deze documenten aan de toetsingscommissie via ACC@minfin.nl. De documenten dienen voorzien te zijn van de metadata, dat wil zeggen ondertekening conform RACI.",
+              "guidance": "Voor een volledig cloudadvies stuurt u deze documenten aan de toetsingscommissie via ACC@minbzk.nl. De documenten dienen voorzien te zijn van de metadata, dat wil zeggen ondertekening conform RACI.",
               "type": "checkbox",
               "importance": "optional",
               "options": [
@@ -416,7 +416,7 @@
         {
           "id": "cte2",
           "title": "Activiteiten cloudbeleid (bijlage A)",
-          "description": "Om te voldoen aan alle vereisten van het cloudbeleid Financiën vormt dit activiteitenoverzicht de basis. Activiteiten 1 t/m 12 dienen te worden uitgewerkt. De verantwoordelijkheid voor alle onderdelen, inclusief de RACI-rollen, ligt bij de indienende directie. Op verzoek van de indienende directie kan de toetsingscommissie een advies of oordeel geven over compleetheid en juistheid.",
+          "description": "Om te voldoen aan alle vereisten van het cloudbeleid BZK vormt dit activiteitenoverzicht de basis. Activiteiten 1 t/m 12 dienen te worden uitgewerkt. De verantwoordelijkheid voor alle onderdelen, inclusief de RACI-rollen, ligt bij de indienende directie. Op verzoek van de indienende directie kan de toetsingscommissie een advies of oordeel geven over compleetheid en juistheid.",
           "questions": [
             {
               "id": "ct_e.activiteiten",
@@ -441,7 +441,7 @@
             {
               "id": "ct_e.activiteiten_toelichting",
               "text": "Toelichting bij de activiteiten en de belegde rollen",
-              "guidance": "Benoem per nog niet uitgewerkte activiteit wie die oppakt en wanneer. Kaders, richtlijnen en formats zijn te vinden in de samenwerkruimte Cloudbeleid Financiën.",
+              "guidance": "Benoem per nog niet uitgewerkte activiteit wie die oppakt en wanneer. Kaders, richtlijnen en formats zijn te vinden in de samenwerkruimte Cloudbeleid BZK.",
               "type": "text",
               "importance": "optional"
             },
@@ -478,7 +478,7 @@
               "type": "radio",
               "importance": "optional",
               "options": ["Ja", "Nee", "Nog niet bepaald"],
-              "followUp": "Wanneer wordt de aanvraag ingediend bij ACC@minfin.nl, en welke producten gaan mee?"
+              "followUp": "Wanneer wordt de aanvraag ingediend bij ACC@minbzk.nl, en welke producten gaan mee?"
             },
             {
               "id": "ct_e.vervolgstappen",

@@ -26,7 +26,7 @@ const UPSTREAM_PATTERN = /^urn:nl:aivt:tr:[a-z]+:[0-9]+\.[0-9]+/
 
 describe('buildFormUrn', () => {
   it('mints in our own authority, in task-registry shape', () => {
-    expect(buildFormUrn('dpia', '3.0')).toBe('urn:nl:minfin:tr:dpia:3.0')
+    expect(buildFormUrn('dpia', '3.0')).toBe('urn:nl:bzk:tr:dpia:3.0')
   })
 
   it('rejects an id or version that breaks the convention', () => {
@@ -39,7 +39,7 @@ describe('buildFormUrn', () => {
     expect(parseFormUrn('urn:nl:aivt:tr:iama:1.0')).toEqual({
       authority: 'aivt', registry: 'tr', instrument: 'iama', version: '1.0',
     })
-    expect(parseFormUrn('urn:nl:minfin:tr:dpia')).toBeNull()
+    expect(parseFormUrn('urn:nl:bzk:tr:dpia')).toBeNull()
   })
 })
 

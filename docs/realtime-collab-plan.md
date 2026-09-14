@@ -160,7 +160,7 @@ co-editor. Resolution:
 
 - *Sidecar:* `@hocuspocus/server` (+ `@hocuspocus/provider` client). Best
   support, batteries included; costs a second service in `docker-compose.yml`,
-  a container in `Dockerfile`, a stage in `azure-pipelines.yml`, and a second
+  a container in `Dockerfile`, an extra CI stage, and a second
   auth integration point.
 - *Python-native:* `pycrdt` + `pycrdt-websocket` on FastAPI (uvicorn[standard]
   already carries WebSocket support). One backend, one auth story; less-travelled.

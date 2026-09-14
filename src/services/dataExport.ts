@@ -140,7 +140,7 @@ export function exportToMarkdown(
 
   const lines: string[] = []
   lines.push(`# ${formConfig.meta.docTitle}`)
-  lines.push(`**Ministerie van Financiën** | ${today}`)
+  lines.push(`**Ministerie van Binnenlandse Zaken en Koninkrijksrelaties** | ${today}`)
   if (formConfig.urn) lines.push(`**Formulier:** \`${formConfig.urn}\``)
   if (formConfig.registryUrn) lines.push(`**Instrument (task-registry):** \`${formConfig.registryUrn}\``)
   if (systemName) lines.push(`**Systeem/project:** ${systemName}`)

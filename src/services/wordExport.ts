@@ -391,7 +391,7 @@ export async function exportToWord(
               children: [
                 new Paragraph({
                   spacing: { after: 200 },
-                  children: [new TextRun({ text: 'MINISTERIE VAN FINANCIËN', size: SIZE.coverKicker, color: '9DBAD6', bold: true })],
+                  children: [new TextRun({ text: 'MINISTERIE VAN BINNENLANDSE ZAKEN EN KONINKRIJKSRELATIES', size: SIZE.coverKicker, color: '9DBAD6', bold: true })],
                 }),
                 new Paragraph({
                   children: [new TextRun({ text: formConfig.meta.docTitle, bold: true, size: SIZE.coverTitle, color: NLDD.surface })],
@@ -591,7 +591,7 @@ export async function exportToWord(
   }
 
   const doc = new Document({
-    creator: 'Ministerie van Financiën',
+    creator: 'Ministerie van Binnenlandse Zaken en Koninkrijksrelaties',
     title: formConfig.meta.docTitle,
     styles: {
       default: {

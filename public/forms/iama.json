@@ -1,7 +1,7 @@
 {
   "id": "iama",
   "version": "2.0",
-  "urn": "urn:nl:minfin:tr:iama:2.0",
+  "urn": "urn:nl:bzk:tr:iama:2.0",
   "registryUrn": "urn:nl:aivt:tr:iama:1.0",
   "title": "Impact Assessment Mensenrechten en Algoritmes (IAMA)",
   "source": {
@@ -13,16 +13,16 @@
     "derivation": "generated",
     "note": "Gegenereerd met `npm run forms:build`; niet handmatig bewerken. Elke vraag draagt de upstream task-id als officialId. Zie docs/SCHEMA_HARMONIZATION.md."
   },
-  "aiContext": "Dit is een Impact Assessment Mensenrechten en Algoritmes (IAMA v2) volgens het officiële model van MinBZK (urn:nl:iama) voor het Ministerie van Financiën: een gestructureerde beoordeling van de impact van een algoritme of AI-systeem op grondrechten en publieke waarden, in lijn met artikel 27 van de EU AI-verordening. Het instrument doorloopt Waarom (doel en grondslag), Wat (soort algoritme en data), Hoe (inzet en governance), Mensenrechten (grondrechtentoets) en een Afsluiting met belangenafweging en advies. Schrijf zorgvuldig in termen van grondrechten, publieke waarden en AI-governance.",
+  "aiContext": "Dit is een Impact Assessment Mensenrechten en Algoritmes (IAMA v2) volgens het officiële model van MinBZK (urn:nl:iama) voor het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties: een gestructureerde beoordeling van de impact van een algoritme of AI-systeem op grondrechten en publieke waarden, in lijn met artikel 27 van de EU AI-verordening. Het instrument doorloopt Waarom (doel en grondslag), Wat (soort algoritme en data), Hoe (inzet en governance), Mensenrechten (grondrechtentoets) en een Afsluiting met belangenafweging en advies. Schrijf zorgvuldig in termen van grondrechten, publieke waarden en AI-governance.",
   "meta": {
     "homeComponent": "HomePage",
     "exportLabel": "IAMA",
     "docTitle": "Impact Assessment Mensenrechten en Algoritmes",
-    "footerLabel": "IAMA – MinFin",
-    "filename": "IAMA-MinFin.pdf",
+    "footerLabel": "IAMA – MinBZK",
+    "filename": "IAMA-MinBZK.pdf",
     "systemNamePlaceholder": "Bijv. Verkeersprognosemodel v2",
     "homeContent": {
-      "notice": "Dit is een digitale hulptool bij het invullen van het Impact Assessment Mensenrechten en Algoritmes (IAMA). Het invullen vervangt niet het advies van juridische, privacy- of grondrechtenexperts. Het IAMA is bedoeld als instrument voor interdisciplinaire dialoog en besluitvorming; betrek de relevante deskundigen binnen MinFin.",
+      "notice": "Dit is een digitale hulptool bij het invullen van het Impact Assessment Mensenrechten en Algoritmes (IAMA). Het invullen vervangt niet het advies van juridische, privacy- of grondrechtenexperts. Het IAMA is bedoeld als instrument voor interdisciplinaire dialoog en besluitvorming; betrek de relevante deskundigen binnen MinBZK.",
       "description": "Het IAMA (Impact Assessment Mensenrechten en Algoritmes, versie 2) helpt overheidsorganisaties bij het beoordelen van de impact van een algoritme of AI-systeem op grondrechten en publieke waarden, voorafgaand aan ontwikkeling of inzet. Het is in lijn gebracht met de grondrechtenbeoordeling uit artikel 27 van de EU AI-verordening en stuurt het projectteam aan om een onderbouwd advies te formuleren over het al dan niet inzetten van het algoritme.",
       "steps": [
         "Deel 1 – Waarom? Aanleiding, doel, publieke waarden en wettelijke grondslag",

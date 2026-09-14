@@ -11,7 +11,7 @@ en moeten dat bij de eerste login wijzigen — daarna loggen ze in via de
 normale OIDC-flow in auth.py; er verandert niets aan het loginpad.
 
 Environment variables:
-    OIDC_ADMIN_CLIENT_ID      — service-account client id (default: findocs-admin)
+    OIDC_ADMIN_CLIENT_ID      — service-account client id (default: rijksdocs-admin)
     OIDC_ADMIN_CLIENT_SECRET  — bijbehorend client secret
     (Keycloak-URL en realm worden afgeleid uit OIDC_DISCOVERY_URL, zie auth.py.)
 """
@@ -31,12 +31,12 @@ import auth
 # `dossiers` wordt binnen de handlers geïmporteerd, niet hier: dossiers → users
 # → admin_users is een importcyclus (users leent _kc uit deze module).
 
-ADMIN_CLIENT_ID = os.environ.get("OIDC_ADMIN_CLIENT_ID", "findocs-admin")
+ADMIN_CLIENT_ID = os.environ.get("OIDC_ADMIN_CLIENT_ID", "rijksdocs-admin")
 ADMIN_CLIENT_SECRET = os.environ.get("OIDC_ADMIN_CLIENT_SECRET", "dev-admin-secret-change-me")
 
-# http://host/realms/findocs/.well-known/openid-configuration →
-#   token: http://host/realms/findocs/protocol/openid-connect/token
-#   admin: http://host/admin/realms/findocs
+# http://host/realms/rijksdocs/.well-known/openid-configuration →
+#   token: http://host/realms/rijksdocs/protocol/openid-connect/token
+#   admin: http://host/admin/realms/rijksdocs
 _REALM_URL = auth.OIDC_DISCOVERY_URL.removesuffix("/.well-known/openid-configuration")
 _BASE_URL, _, _REALM = _REALM_URL.rpartition("/realms/")
 TOKEN_URL = f"{_REALM_URL}/protocol/openid-connect/token"

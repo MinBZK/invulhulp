@@ -1,12 +1,12 @@
 {
   "id": "ihhtoets",
   "version": "0.1",
-  "urn": "urn:nl:minfin:tr:ihhtoets:0.1",
+  "urn": "urn:nl:bzk:tr:ihhtoets:0.1",
   "title": "IHH-toets",
-  "aiContext": "Dit is de Informatiehuishoudingstoets bij IV-verzoeken (IHH-toets) van het Ministerie van Financiën (CDIO/Informatiehuishouding). De toets brengt in beeld welke maatregelen of functionaliteiten nodig zijn om overheidsinformatie in de beoogde applicatie of het beoogde systeem duurzaam toegankelijk te houden: vindbaar, beschikbaar, leesbaar, interpreteerbaar en betrouwbaar. Het kader is de Archiefwet, RINFIN 2022, NEN-ISO 16175-1:2020 en het DUTO-raamwerk van het Nationaal Archief. Schrijf in termen van informatiebeheer en archivering (selectielijst, bewaartermijn, metadata, migratie, vernietiging, ter beschikking stellen) en niet in privacy- of AI-terminologie. Beschrijf per vraag concreet welke functionaliteit of (werk)afspraak wél of niet aanwezig is; noem waar mogelijk het betrokken proces uit de Selectielijst van het ministerie van Financiën.",
+  "aiContext": "Dit is de Informatiehuishoudingstoets bij IV-verzoeken (IHH-toets) van het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties (CDIO/Informatiehuishouding). De toets brengt in beeld welke maatregelen of functionaliteiten nodig zijn om overheidsinformatie in de beoogde applicatie of het beoogde systeem duurzaam toegankelijk te houden: vindbaar, beschikbaar, leesbaar, interpreteerbaar en betrouwbaar. Het kader is de Archiefwet, RINFIN 2022, NEN-ISO 16175-1:2020 en het DUTO-raamwerk van het Nationaal Archief. Schrijf in termen van informatiebeheer en archivering (selectielijst, bewaartermijn, metadata, migratie, vernietiging, ter beschikking stellen) en niet in privacy- of AI-terminologie. Beschrijf per vraag concreet welke functionaliteit of (werk)afspraak wél of niet aanwezig is; noem waar mogelijk het betrokken proces uit de Selectielijst van het ministerie van Binnenlandse Zaken en Koninkrijksrelaties.",
   "source": {
     "instrument": "Informatiehuishoudingstoets bij IV-verzoeken (IHH-toets)",
-    "publisher": "Ministerie van Financiën — CDIO, afdeling Informatiehuishouding",
+    "publisher": "Ministerie van Binnenlandse Zaken en Koninkrijksrelaties — CDIO, afdeling Informatiehuishouding",
     "reference": "data/docs/IHH Toets.pdf; gebaseerd op de Archiefwet, RINFIN 2022, NEN-ISO 16175-1:2020 en het DUTO-raamwerk (duurzaam toegankelijke overheidsinformatie) van het Nationaal Archief",
     "derivation": "harmonized",
     "note": "Handmatig overgenomen uit het Word/PDF-origineel van CDIO/IHH; de achttien genummerde vragen, hun toelichtingen en de indeling naar DUTO-kernprocessen volgen het origineel woordelijk. De in het origineel dikgedrukte vragen (1, 2, 4, 5, 6, 7, 16 en 17) betreffen functionaliteiten of maatregelen die altijd van belang zijn en staan hier als 'mandatory'. Versie 0.1: nog niet vastgesteld — het origineel draagt zelf geen versienummer, en de toets wordt doorlopen onder begeleiding van een IHH-professional. Het origineel noemt 'NEN-ISO 16715-1:2020'; dat is een verschrijving voor NEN-ISO 16175-1:2020."
@@ -15,7 +15,7 @@
     "homeComponent": "HomePage",
     "exportLabel": "IHH-toets",
     "docTitle": "Informatiehuishoudingstoets bij IV-verzoeken",
-    "footerLabel": "IHH-toets – MinFin",
+    "footerLabel": "IHH-toets – MinBZK",
     "filename": "IHH-toets.pdf",
     "systemNamePlaceholder": "Bijv. Zaaksysteem Toeslagen v2",
     "homeContent": {
@@ -102,14 +102,14 @@
               "text": "Binnen welk(e) proces(sen) wordt de applicatie of het systeem ingezet?",
               "type": "text",
               "importance": "mandatory",
-              "guidance": "Geef hier aan binnen welk(e) proces(sen) de applicatie of het systeem gebruikt gaat worden. Bij voorkeur wordt hier ook een verwijzing gemaakt naar (een) proces(sen) binnen de Selectielijst van het ministerie van Financiën."
+              "guidance": "Geef hier aan binnen welk(e) proces(sen) de applicatie of het systeem gebruikt gaat worden. Bij voorkeur wordt hier ook een verwijzing gemaakt naar (een) proces(sen) binnen de Selectielijst van het ministerie van Binnenlandse Zaken en Koninkrijksrelaties."
             },
             {
               "id": "ihh_a.bewaartermijn",
               "text": "Hoe lang zijn de overheidsinformatie/-gegevens die in de applicatie of het systeem opgeslagen worden te bewaren?",
               "type": "text",
               "importance": "mandatory",
-              "guidance": "Hoe lang overheidsinformatie/-gegevens bewaard moeten worden is vastgelegd in de selectielijst (zie: Selectielijst van het ministerie van Financiën). Informatie is óf permanent te bewaren, óf op termijn te vernietigen."
+              "guidance": "Hoe lang overheidsinformatie/-gegevens bewaard moeten worden is vastgelegd in de selectielijst (zie: Selectielijst van het ministerie van Binnenlandse Zaken en Koninkrijksrelaties). Informatie is óf permanent te bewaren, óf op termijn te vernietigen."
             },
             {
               "id": "ihh_a.archiveringslocatie",

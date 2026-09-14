@@ -7,7 +7,7 @@
  * Reads:
  *   vendor/par-dpia-form/<name>.yaml        (upstream source of truth, pinned)
  *   scripts/form-overlays/<name>.overlay.json (our presentation + section grouping)
- *   scripts/schemas/findocs-form.schema.json  (our runtime shape, for validation)
+ *   scripts/schemas/rijksdocs-form.schema.json  (our runtime shape, for validation)
  *
  * Writes:
  *   public/forms/<name>.json                               (generated runtime form)
@@ -331,7 +331,7 @@ const navigation = [
 const form = { ...overlay.form, navigation, sections: nonEmpty }
 
 // ---------- validate ----------
-const schema = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/schemas/findocs-form.schema.json'), 'utf8'))
+const schema = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/schemas/rijksdocs-form.schema.json'), 'utf8'))
 const ajv = new Ajv({ allErrors: true })
 const validate = ajv.compile(schema)
 if (!validate(form)) {

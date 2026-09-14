@@ -344,7 +344,7 @@ export async function exportToLegacyDocx(
     }),
   ]
   const WEM_QUESTIONS: [string, string][] = [
-    ['1', 'Het is uitsluitend ter ondersteuning van taken binnen Financiën?'],
+    ['1', 'Het is uitsluitend ter ondersteuning van taken binnen BZK?'],
     ['2', 'Het is uitsluitend ter ondersteuning van niet kritische bedrijfsprocessen?*'],
     ['3', 'Er zijn geen standaardmarktproducten of Rijksvoorzieningen beschikbaar/bekend?'],
     [
@@ -381,7 +381,7 @@ export async function exportToLegacyDocx(
   )
 
   const doc = new Document({
-    creator: 'Ministerie van Financiën',
+    creator: 'Ministerie van Binnenlandse Zaken en Koninkrijksrelaties',
     title: 'Intakeformulier',
     styles: { default: { document: { run: { font: FONT, size: SIZE } } } },
     sections: [{ properties: {}, children }],

@@ -14,7 +14,7 @@ The two projects are architecturally close (Vue 3, Pinia, Keycloak, pdfmake; par
 still on the RVO design system, where this app has moved to NLDD)
 but their **form schemas differ fundamentally**:
 
-| | Our app (findocs) | par-dpia-form |
+| | Our app (rijksdocs) | par-dpia-form |
 |---|---|---|
 | Format | JSON in `public/forms/` | YAML in `sources/` |
 | Model | fixed 3 levels: `section → subsection → question` | recursive `tasks` tree (`task_group`, `repeatable`) |
@@ -78,7 +78,7 @@ are judgment calls and should be reviewed** by someone who knows the DPIA intent
 | `vendor/par-dpia-form/PROVENANCE.md` | Source URL, pinned commit, refresh + licensing notes. |
 | `scripts/convert-form.mjs` | The converter (Node ESM). |
 | `scripts/form-overlays/dpia.overlay.json` | Hand-authored: our presentation (`meta`/`homeContent`/`aiContext`/`features`) + the mapping of upstream paragraphs into Deel A/B/C/D. |
-| `scripts/schemas/findocs-form.schema.json` | JSON Schema for **our** `FormConfig`; the converter validates output against it and fails the build on mismatch. |
+| `scripts/schemas/rijksdocs-form.schema.json` | JSON Schema for **our** `FormConfig`; the converter validates output against it and fails the build on mismatch. |
 | `scripts/form-overlays/dpia.dropped-dependencies.json` | Generated report of every lossy conversion (see below). |
 | `docs/SCHEMA_HARMONIZATION.md` | This document. |
 
@@ -171,7 +171,7 @@ The same converter was pointed at the other two assessments in `MinBZK/par-dpia-
 (`sources/prescan.yaml`, `sources/iama.yaml`) — the only two of our forms with an upstream
 counterpart. Pre-scan DPIA **replaced** our old hand-written prescan (same instrument); IAMA was
 added as a **new form** next to the existing AIIA (different instrument — see below). The other five
-forms (intake, aanbiedingsformulier, ppm, psa, quickscan) are MinFin/BIO-specific and have no MinBZK
+forms (intake, aanbiedingsformulier, ppm, psa, quickscan) are MinBZK/BIO-specific and have no MinBZK
 source.
 
 **Naming:** each vendored file is named after *our* form id — `vendor/par-dpia-form/prescandpia.yaml`
@@ -205,7 +205,7 @@ stays a human judgement (as it already was).
 ### IAMA (`iama`) — added as a NEW form, alongside AIIA (not a replacement)
 Upstream **Impact Assessment Mensenrechten en Algoritmes v2** (`urn:nl:iama`). The IAMA is a
 grondrechten/human-rights dialogue instrument (aligned with AI-Act art. 27) and is a *different*
-instrument from our hand-written MinFin AIIA (an EU-AI-Act risk-classification form with the bespoke
+instrument from our hand-written MinBZK AIIA (an EU-AI-Act risk-classification form with the bespoke
 `riskClassification` / `decisionGate` / `conditionalPartB` features). Rather than overwrite the AIIA,
 IAMA was added as a **new, separate form** (`id: iama`, `public/forms/iama.json`, `index.json`
 assessment track order 4). The AIIA (`aiia.json`) is **untouched** — verified byte-for-byte identical
@@ -283,7 +283,7 @@ Cross-instrument relationships are **defined upstream**, in two MinBZK repos wit
 4. **Consider a UI affordance for the collapsed conditionals.** If the "Alleen relevant indien…"
    guidance proves clunky, the cheapest real fix is extending our model with a lightweight
    per-question `visibleIf` — a separate, larger change deliberately out of scope here.
-5. **Optionally validate the live form loader** against `scripts/schemas/findocs-form.schema.json`
+5. **Optionally validate the live form loader** against `scripts/schemas/rijksdocs-form.schema.json`
    (add ajv to `loadForm` in dev) so hand-edited forms get the same safety net as generated ones.
 6. **Extension to Pre-scan DPIA and IAMA — done (2026-07-28).** See the dedicated section below.
    Prescan was a clean in-place match; IAMA is a *different* instrument from the AIIA, so it was added

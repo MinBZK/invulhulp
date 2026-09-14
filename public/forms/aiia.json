@@ -1,29 +1,29 @@
 {
   "id": "aiia",
   "version": "2.1",
-  "urn": "urn:nl:minfin:tr:aiia:2.1",
+  "urn": "urn:nl:bzk:tr:aiia:2.1",
   "registryUrn": "urn:nl:aivt:tr:aiia:1.0",
   "title": "AI Impact Assessment",
   "source": {
     "instrument": "AI Impact Assessment (AIIA) 2.0",
-    "publisher": "Ministerie van Financiën",
+    "publisher": "Ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
     "version": "2.0",
     "url": "https://www.rijksoverheid.nl/documenten/rapporten/2022/11/30/ai-impact-assessment-ministerie-van-infrastructuur-en-waterstaat",
     "reference": "IenW AI Impact Assessment 2.0 (december 2024), hoofdstukken 1-7; risicoclassificatie via de MinBZK-beslishulp AI-verordening in plaats van Bijlage 1",
     "derivation": "harmonized",
-    "note": "Bron is het AI Impact Assessment 2.0 van het Ministerie van Infrastructuur en Waterstaat (PDF, december 2024); de officiele Invultemplate-AIIA2.0.docx van het Algoritmekader is de invulvorm daarvan. De 110 vragen en hun verplicht/hulpvraag-indeling (34 blauw, 76 groen) zijn ongewijzigd overgenomen. Eigen toevoegingen van MinFin, niet afkomstig uit het IenW-format: 1.1.4 (aanleiding), 1.1.5 (verwachte voordelen), 1.1.6 (termijn en looptijd) en 3.3 (conclusie; stuurt de beslispoort naar deel B aan en is daarom verplicht, hoewel de bron hier geen vraag stelt). Bijlage 1 van de bron is vervangen door de MinBZK-beslishulp AI-verordening (zie vendor/ai-verordening-beslishulp); Bijlage 2 wordt gedekt door euaiact; Bijlage 3 (generatieve AI) is nog niet verwerkt. Niet gegenereerd uit par-dpia-form en losstaand van de vendored IAMA."
+    "note": "Bron is het AI Impact Assessment 2.0 van het Ministerie van Infrastructuur en Waterstaat (PDF, december 2024); de officiele Invultemplate-AIIA2.0.docx van het Algoritmekader is de invulvorm daarvan. De 110 vragen en hun verplicht/hulpvraag-indeling (34 blauw, 76 groen) zijn ongewijzigd overgenomen. Eigen toevoegingen van MinBZK, niet afkomstig uit het IenW-format: 1.1.4 (aanleiding), 1.1.5 (verwachte voordelen), 1.1.6 (termijn en looptijd) en 3.3 (conclusie; stuurt de beslispoort naar deel B aan en is daarom verplicht, hoewel de bron hier geen vraag stelt). Bijlage 1 van de bron is vervangen door de MinBZK-beslishulp AI-verordening (zie vendor/ai-verordening-beslishulp); Bijlage 2 wordt gedekt door euaiact; Bijlage 3 (generatieve AI) is nog niet verwerkt. Niet gegenereerd uit par-dpia-form en losstaand van de vendored IAMA."
   },
-  "aiContext": "Dit is een AI Impact Assessment (AIIA) voor het Ministerie van Financiën: het beoordeelt de verantwoorde inzet van een AI-systeem, inclusief risicoclassificatie onder de AI-verordening, impact op grondrechten, en waarborgen rond bias, nauwkeurigheid, transparantie en beveiliging. Schrijf in AI-governance- en compliance-termen.",
+  "aiContext": "Dit is een AI Impact Assessment (AIIA) voor het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties: het beoordeelt de verantwoorde inzet van een AI-systeem, inclusief risicoclassificatie onder de AI-verordening, impact op grondrechten, en waarborgen rond bias, nauwkeurigheid, transparantie en beveiliging. Schrijf in AI-governance- en compliance-termen.",
   "meta": {
     "homeComponent": "HomePage",
     "exportLabel": "AIIA",
     "docTitle": "AI Impact Assessment",
-    "footerLabel": "AI Impact Assessment – MinFin",
+    "footerLabel": "AI Impact Assessment – MinBZK",
     "filename": "AI-Impact-Assessment-IenW.pdf",
     "systemNamePlaceholder": "Bijv. Verkeersprognosemodel v2",
     "homeContent": {
-      "notice": "Dit is een digitale hulptool bij het invullen van het AI Impact Assessment. Het invullen van dit formulier vervangt niet het advies van juridische, privacy- of AI-experts. Raadpleeg bij twijfel altijd de relevante deskundigen binnen MinFin.",
-      "description": "Het AI Impact Assessment (AIIA) helpt medewerkers van MinFin om op een gestructureerde manier te beoordelen of het verantwoord is een AI-systeem in te zetten, en hoe dit systeem verantwoord geïmplementeerd en gebruikt kan worden.",
+      "notice": "Dit is een digitale hulptool bij het invullen van het AI Impact Assessment. Het invullen van dit formulier vervangt niet het advies van juridische, privacy- of AI-experts. Raadpleeg bij twijfel altijd de relevante deskundigen binnen MinBZK.",
+      "description": "Het AI Impact Assessment (AIIA) helpt medewerkers van MinBZK om op een gestructureerde manier te beoordelen of het verantwoord is een AI-systeem in te zetten, en hoe dit systeem verantwoord geïmplementeerd en gebruikt kan worden.",
       "steps": [
         "Risicoclassificatie op basis van de EU AI-verordening",
         "Deel A – Afweging: is het verantwoord dit AI-systeem in te zetten?",
@@ -828,7 +828,7 @@
             },
             {
               "id": "6.3.6",
-              "text": "Worden aanvullende maatregelen getroffen bovenop de standaard MinFin-beveiligingsmaatregelen?",
+              "text": "Worden aanvullende maatregelen getroffen bovenop de standaard MinBZK-beveiligingsmaatregelen?",
               "type": "radio",
               "importance": "optional",
               "options": ["Ja", "Nee"],

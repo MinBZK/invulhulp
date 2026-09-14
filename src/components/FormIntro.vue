@@ -5,7 +5,7 @@
       <header>
         <nldd-title size="1"><h1 class="form-intro__title">{{ formConfig.title }}</h1></nldd-title>
         <nldd-text color="inherit" size="lg" class="form-intro__subtitle">
-          Versie {{ formConfig.version }} — Ministerie van Financiën
+          Versie {{ formConfig.version }} — Ministerie van Binnenlandse Zaken en Koninkrijksrelaties
         </nldd-text>
       </header>
 

@@ -7,43 +7,43 @@
       <p>Bezig met laden…</p>
     </div>
 
-    <div v-else-if="auth.status === 'anonymous'" class="findocs-landing">
+    <div v-else-if="auth.status === 'anonymous'" class="rijksdocs-landing">
       <!-- Hero -->
-      <section class="findocs-hero">
-        <div class="findocs-hero__aurora" aria-hidden="true" />
-        <div class="findocs-hero__inner">
-          <div class="findocs-brand">
-            <img class="findocs-brand__emblem" :src="rijkslogoUrl" alt="" />
-            <span class="findocs-brand__org">Ministerie van Financiën</span>
+      <section class="rijksdocs-hero">
+        <div class="rijksdocs-hero__aurora" aria-hidden="true" />
+        <div class="rijksdocs-hero__inner">
+          <div class="rijksdocs-brand">
+            <img class="rijksdocs-brand__emblem" :src="rijkslogoUrl" alt="" />
+            <span class="rijksdocs-brand__org">Ministerie van Binnenlandse Zaken en Koninkrijksrelaties</span>
           </div>
 
-          <h1 class="findocs-hero__title">Fin<span class="findocs-hero__title-accent">Docs</span></h1>
-          <p class="findocs-hero__tagline">De slimme invulhulp voor IV-projecten, privacy en AI-impact assessments</p>
-          <p class="findocs-hero__lead">
-            Upload je achtergronddocumenten en laat FinDocs de formulieren — van intake tot DPIA —
+          <h1 class="rijksdocs-hero__title">Rijks<span class="rijksdocs-hero__title-accent">Docs</span></h1>
+          <p class="rijksdocs-hero__tagline">De slimme invulhulp voor IV-projecten, privacy en AI-impact assessments</p>
+          <p class="rijksdocs-hero__lead">
+            Upload je achtergronddocumenten en laat RijksDocs de formulieren — van intake tot DPIA —
             met AI voorinvullen, inclusief bronverwijzing. Jij houdt de regie: controleren, bijschaven, vaststellen.
           </p>
 
-          <div class="findocs-hero__cta">
+          <div class="rijksdocs-hero__cta">
             <nldd-button
-              class="findocs-cta-btn"
+              class="rijksdocs-cta-btn"
               variant="inherit-filled"
               size="lg"
               start-icon="arrow-right-in-bucket"
               text="Inloggen met SSO"
               @click="auth.login()"
             />
-            <span class="findocs-hero__cta-note">Inloggen vereist · alleen voor medewerkers van het ministerie</span>
+            <span class="rijksdocs-hero__cta-note">Inloggen vereist · alleen voor medewerkers van het ministerie</span>
           </div>
         </div>
       </section>
 
       <!-- Feature highlights -->
-      <section class="findocs-features" aria-label="Wat FinDocs voor je doet">
-        <article v-for="f in features" :key="f.title" class="findocs-feature">
-          <span class="findocs-feature__icon"><nldd-icon :name="f.icon" size="28" color="accent" /></span>
-          <h2 class="findocs-feature__title">{{ f.title }}</h2>
-          <p class="findocs-feature__desc">{{ f.desc }}</p>
+      <section class="rijksdocs-features" aria-label="Wat RijksDocs voor je doet">
+        <article v-for="f in features" :key="f.title" class="rijksdocs-feature">
+          <span class="rijksdocs-feature__icon"><nldd-icon :name="f.icon" size="28" color="accent" /></span>
+          <h2 class="rijksdocs-feature__title">{{ f.title }}</h2>
+          <p class="rijksdocs-feature__desc">{{ f.desc }}</p>
         </article>
       </section>
     </div>
@@ -75,7 +75,7 @@ const features = [
   {
     icon: 'folder',
     title: 'Brondocumenten',
-    desc: 'Upload notulen, agenda’s en brainstorms in .docx, .xlsx, .pptx, .pdf, .txt of .md. FinDocs leest en indexeert ze automatisch.',
+    desc: 'Upload notulen, agenda’s en brainstorms in .docx, .xlsx, .pptx, .pdf, .txt of .md. RijksDocs leest en indexeert ze automatisch.',
   },
   {
     icon: 'sparkles',
@@ -125,14 +125,14 @@ onMounted(async () => {
   gap: var(--primitives-space-16);
 }
 
-/* ===== FinDocs landing / login screen ===== */
-.findocs-landing {
+/* ===== RijksDocs landing / login screen ===== */
+.rijksdocs-landing {
   min-block-size: 100vh;
   background: var(--semantics-surfaces-tinted-background-color);
 }
 
 /* --- Hero --- */
-.findocs-hero {
+.rijksdocs-hero {
   position: relative;
   overflow: hidden;
   background: var(--semantics-content-accent-color);
@@ -142,7 +142,7 @@ onMounted(async () => {
 }
 
 /* Flashy-but-tasteful drifting aurora using the app's AI-mode palette */
-.findocs-hero__aurora {
+.rijksdocs-hero__aurora {
   position: absolute;
   inset: -40% -10% auto -10%;
   block-size: 160%;
@@ -152,21 +152,21 @@ onMounted(async () => {
     radial-gradient(50% 60% at 55% 80%, rgba(14, 165, 233, 0.35), transparent 70%);
   filter: blur(8px);
   opacity: 0.85;
-  animation: findocs-aurora var(--invulhulp-loop-ambient) var(--invulhulp-ease-in-out) infinite alternate;
+  animation: rijksdocs-aurora var(--invulhulp-loop-ambient) var(--invulhulp-ease-in-out) infinite alternate;
   pointer-events: none;
 }
 
-@keyframes findocs-aurora {
+@keyframes rijksdocs-aurora {
   0%   { transform: translate3d(-3%, -2%, 0) scale(1); }
   50%  { transform: translate3d(3%, 2%, 0) scale(1.08); }
   100% { transform: translate3d(-2%, 1%, 0) scale(1.04); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .findocs-hero__aurora { animation: none; }
+  .rijksdocs-hero__aurora { animation: none; }
 }
 
-.findocs-hero__inner {
+.rijksdocs-hero__inner {
   position: relative;
   z-index: 1;
   max-inline-size: 46rem;
@@ -174,7 +174,7 @@ onMounted(async () => {
   text-align: center;
 }
 
-.findocs-brand {
+.rijksdocs-brand {
   display: inline-flex;
   align-items: center;
   gap: var(--primitives-space-12);
@@ -187,19 +187,19 @@ onMounted(async () => {
 
 /* The Rijkslogo is a 1:2 portrait mark — set the
    height and let the width follow, or it renders stretched. */
-.findocs-brand__emblem {
+.rijksdocs-brand__emblem {
   block-size: 2rem;
   inline-size: auto;
 }
 
-.findocs-brand__org {
+.rijksdocs-brand__org {
   font-size: var(--primitives-font-size-90);
   font-weight: var(--primitives-font-weight-body-semi-bold);
   color: rgb(255 255 255 / 0.92);
   white-space: nowrap;
 }
 
-.findocs-hero__title {
+.rijksdocs-hero__title {
   font-size: clamp(3rem, 11vw, 5.5rem);
   font-weight: var(--primitives-font-weight-body-bold);
   line-height: 1.02;
@@ -208,25 +208,25 @@ onMounted(async () => {
   color: var(--semantics-surfaces-base-background-color);
 }
 
-.findocs-hero__title-accent {
+.rijksdocs-hero__title-accent {
   background: linear-gradient(110deg, #7dd3fc 0%, #a78bfa 45%, #7dd3fc 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  animation: findocs-shine var(--invulhulp-loop-sheen) var(--invulhulp-ease-linear) infinite;
+  animation: rijksdocs-shine var(--invulhulp-loop-sheen) var(--invulhulp-ease-linear) infinite;
 }
 
-@keyframes findocs-shine {
+@keyframes rijksdocs-shine {
   to { background-position: 200% center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .findocs-hero__title-accent { animation: none; }
+  .rijksdocs-hero__title-accent { animation: none; }
 }
 
-.findocs-hero__tagline {
+.rijksdocs-hero__tagline {
   margin: var(--primitives-space-16) auto 0;
   max-inline-size: 36rem;
   font-size: clamp(1.125rem, 2.4vw, 1.5rem);
@@ -234,7 +234,7 @@ onMounted(async () => {
   color: rgb(255 255 255 / 0.95);
 }
 
-.findocs-hero__lead {
+.rijksdocs-hero__lead {
   margin: var(--primitives-space-16) auto 0;
   max-inline-size: 38rem;
   font-size: var(--primitives-font-size-100);
@@ -242,7 +242,7 @@ onMounted(async () => {
   color: rgb(255 255 255 / 0.8);
 }
 
-.findocs-hero__cta {
+.rijksdocs-hero__cta {
   margin-block-start: var(--primitives-space-40);
   display: flex;
   flex-direction: column;
@@ -253,18 +253,18 @@ onMounted(async () => {
 /* inherit-filled derives its colours from the surrounding text colour, which on
    the hero is white on the accent surface — exactly the contrast we want. The
    shadow sits on the host; the button's own box is inside its shadow root. */
-.findocs-cta-btn {
+.rijksdocs-cta-btn {
   border-radius: var(--primitives-corner-radius-md);
   box-shadow: 0 6px 20px rgb(0 0 0 / 0.25);
 }
 
-.findocs-hero__cta-note {
+.rijksdocs-hero__cta-note {
   font-size: var(--primitives-font-size-90);
   color: rgb(255 255 255 / 0.65);
 }
 
 /* --- Feature highlights --- */
-.findocs-features {
+.rijksdocs-features {
   max-inline-size: 64rem;
   margin: clamp(-3rem, -6vw, -4rem) auto 0;
   padding-inline: var(--primitives-space-32);
@@ -276,7 +276,7 @@ onMounted(async () => {
   gap: var(--primitives-space-24);
 }
 
-.findocs-feature {
+.rijksdocs-feature {
   background: var(--semantics-surfaces-base-background-color);
   border: 1px solid var(--semantics-dividers-color);
   border-radius: var(--primitives-corner-radius-md);
@@ -285,12 +285,12 @@ onMounted(async () => {
   transition: transform var(--invulhulp-duration-fast), box-shadow var(--invulhulp-duration-fast);
 }
 
-.findocs-feature:hover {
+.rijksdocs-feature:hover {
   transform: translateY(-3px);
   box-shadow: 0 2px 6px rgb(21 66 115 / 0.1), 0 14px 30px rgb(21 66 115 / 0.12);
 }
 
-.findocs-feature__icon {
+.rijksdocs-feature__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -301,14 +301,14 @@ onMounted(async () => {
   border-radius: var(--primitives-corner-radius-sm);
 }
 
-.findocs-feature__title {
+.rijksdocs-feature__title {
   font-size: var(--primitives-font-size-200);
   font-weight: var(--primitives-font-weight-body-bold);
   color: var(--semantics-content-accent-color);
   margin: 0 0 var(--primitives-space-8);
 }
 
-.findocs-feature__desc {
+.rijksdocs-feature__desc {
   font-size: var(--primitives-font-size-90);
   line-height: var(--primitives-line-height-snug);
   color: var(--invulhulp-color-text-subtle);

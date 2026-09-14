@@ -1,7 +1,7 @@
 {
-  "name": "findocs",
+  "name": "rijksdocs",
   "version": "1.0.0",
-  "description": "findocs – AI-assisted Government Compliance Forms",
+  "description": "rijksdocs – AI-assisted Government Compliance Forms",
   "type": "module",
   "engines": {
     "node": ">=22"
@@ -51,6 +51,8 @@
     "@vitejs/plugin-vue": "^6.0.8",
     "ajv": "^8.20.0",
     "jsdom": "^30.0.1",
+    "pdfkit": "^0.20.2",
+    "playwright": "^1.63.0",
     "pptxgenjs": "^4.0.1",
     "typescript": "^6.0.3",
     "vite": "^8.2.1",

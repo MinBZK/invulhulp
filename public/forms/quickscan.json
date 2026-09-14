@@ -1,22 +1,22 @@
 {
   "id": "quickscan",
   "version": "2.0",
-  "urn": "urn:nl:minfin:tr:quickscan:2.0",
+  "urn": "urn:nl:bzk:tr:quickscan:2.0",
   "title": "Quickscan BIO2 – Classificatietoets",
   "source": {
     "instrument": "Classificatietoets BIO2 — dataclassificatie op beschikbaarheid, integriteit en vertrouwelijkheid",
-    "publisher": "Ministerie van Financiën, op basis van de IBD-handreiking dataclassificatie bij de Baseline Informatiebeveiliging Overheid versie 2",
-    "version": "QIS BIO2 MinFin v1.0 — 10-07-2026",
+    "publisher": "Ministerie van Binnenlandse Zaken en Koninkrijksrelaties, op basis van de IBD-handreiking dataclassificatie bij de Baseline Informatiebeveiliging Overheid versie 2",
+    "version": "QIS BIO2 MinBZK v1.0 — 10-07-2026",
     "reference": "BIO2 5.12.01; Cyberbeveiligingswet art. 21.3.i; Cyberbeveiligingsbesluit art. 16.1–16.3",
     "derivation": "harmonized",
-    "note": "Veldgetrouw overgezet uit de werkmap 'QIS BIO2 MinFin v1.0 - 10072026.xlsx'. De rekenformules van de werkmap (maximumwaarde per aspect, risiconiveau, quantumresultaat) zijn hier invulvelden: de invuller neemt de hoogste waardering zelf over. De maatregelentabbladen zijn een selectie van toepasselijke BIO2-controls, geen in-controlverklaring."
+    "note": "Veldgetrouw overgezet uit de werkmap 'QIS BIO2 MinBZK v1.0 - 10072026.xlsx'. De rekenformules van de werkmap (maximumwaarde per aspect, risiconiveau, quantumresultaat) zijn hier invulvelden: de invuller neemt de hoogste waardering zelf over. De maatregelentabbladen zijn een selectie van toepasselijke BIO2-controls, geen in-controlverklaring."
   },
-  "aiContext": "Dit is de Quickscan BIO2 (classificatietoets) van het Ministerie van Financiën. Hiermee wordt de classificatie van informatie bepaald op beschikbaarheid, integriteit en vertrouwelijkheid, wordt de quantumveiligheid beoordeeld en wordt vastgesteld welke BIO2-maatregelen van toepassing zijn. Schrijf in informatiebeveiligings- en privacytermen. Bij de waarderingsvragen gaat het steeds om het ergste geval; onderbouw elke waardering feitelijk, zodat iemand die de toets later herhaalt de keuze kan volgen.",
+  "aiContext": "Dit is de Quickscan BIO2 (classificatietoets) van het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties. Hiermee wordt de classificatie van informatie bepaald op beschikbaarheid, integriteit en vertrouwelijkheid, wordt de quantumveiligheid beoordeeld en wordt vastgesteld welke BIO2-maatregelen van toepassing zijn. Schrijf in informatiebeveiligings- en privacytermen. Bij de waarderingsvragen gaat het steeds om het ergste geval; onderbouw elke waardering feitelijk, zodat iemand die de toets later herhaalt de keuze kan volgen.",
   "meta": {
     "homeComponent": "HomePage",
     "exportLabel": "Quickscan BIO2",
     "docTitle": "Quickscan BIO2 – Classificatietoets",
-    "footerLabel": "Quickscan BIO2 – MinFin",
+    "footerLabel": "Quickscan BIO2 – MinBZK",
     "filename": "Quickscan-BIO2.pdf",
     "systemNamePlaceholder": "Bijv. Klantportaal medewerkers v1",
     "homeContent": {

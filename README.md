@@ -1,14 +1,14 @@
-# findocs – AI-assisted Government Compliance Forms
+# rijksdocs – AI-assisted Government Compliance Forms
 
 > ⚠️ **Proof of Concept** — This project is an early-stage proof of concept and is not production-ready. We are very much looking for direction, feedback, and collaboration on where to take it next. Please reach out or open an issue if you have ideas.
 
 A web application that helps Dutch government employees fill in AI-related compliance assessments. It guides users through structured forms and uses an LLM (a locally running Ollama model or Azure OpenAI) to extract answers from uploaded source documents, improve free-text, and synthesize answers across forms.
 
-![findocs portal](docs/screenshots/portal.png)
+![rijksdocs portal](docs/screenshots/portal.png)
 
 ## Features
 
-- **20 forms grouped by lifecycle phase** — *Verkennen & afbakenen* (Intakeformulier, Quickscan BIO2, Prescan DPIA) → *Onderbouwen & besluiten* (Aanbiedingsformulier, Restrisico-acceptatie) → *Ontwerpen* (PPM Projectplan, PSA, Datakwaliteit-assessment, Dataset-registratie) → *Toetsen* (DPIA, AI Impact Assessment, IAMA, EU AI Act Compliance Checklist, Data-ethiektoets, IHH-toets, Cloudtoets) → *In gebruik nemen* (AI-systeemregistratie/Model Card, Algoritmeregister-publicatie, Verwerkingsregister, Toegankelijkheidsverklaring) → *Beheren & evalueren* (nothing yet — deliberately shown empty). Every form describes one project or system, matching the dossier that holds it. The subject domain (privacy, beveiliging, AI, data, project) is a tag on each card, not a grouping — see [`docs/sporen-en-roadmap.md`](docs/sporen-en-roadmap.md) for the reasoning and the roadmap of missing instruments. Forms are defined as JSON files under `public/forms/` and loaded at runtime. Every form records where it comes from and how faithfully — see [Form lineage](#form-lineage) — and carries a stable identifier in the shape the MinBZK task-registry uses for its instruments (`urn:nl:minfin:tr:dpia:3.0`), see [Form URNs](#form-urns).
+- **20 forms grouped by lifecycle phase** — *Verkennen & afbakenen* (Intakeformulier, Quickscan BIO2, Prescan DPIA) → *Onderbouwen & besluiten* (Aanbiedingsformulier, Restrisico-acceptatie) → *Ontwerpen* (PPM Projectplan, PSA, Datakwaliteit-assessment, Dataset-registratie) → *Toetsen* (DPIA, AI Impact Assessment, IAMA, EU AI Act Compliance Checklist, Data-ethiektoets, IHH-toets, Cloudtoets) → *In gebruik nemen* (AI-systeemregistratie/Model Card, Algoritmeregister-publicatie, Verwerkingsregister, Toegankelijkheidsverklaring) → *Beheren & evalueren* (nothing yet — deliberately shown empty). Every form describes one project or system, matching the dossier that holds it. The subject domain (privacy, beveiliging, AI, data, project) is a tag on each card, not a grouping — see [`docs/sporen-en-roadmap.md`](docs/sporen-en-roadmap.md) for the reasoning and the roadmap of missing instruments. Forms are defined as JSON files under `public/forms/` and loaded at runtime. Every form records where it comes from and how faithfully — see [Form lineage](#form-lineage) — and carries a stable identifier in the shape the MinBZK task-registry uses for its instruments (`urn:nl:bzk:tr:dpia:3.0`), see [Form URNs](#form-urns).
 - **Beslishulp AI-verordening (MinBZK)** — The official [ai-verordening-beslishulp](https://github.com/MinBZK/ai-verordening-beslishulp) decision tree runs inside the app as a modal, launched from a tile fused to the EU AI Act card on the dossier page. It determines whether the AI-verordening applies, which role you hold (aanbieder, gebruiksverantwoordelijke, importeur, distributeur) and which risk group the system falls in, with the upstream explanations, sources and obligations intact. The outcome is stored on the dossier and supplies the risk classification (Bijlage 1) of the AI Impact Assessment. The decision tree is vendored (`vendor/ai-verordening-beslishulp/`, EUPL-1.2) and built into a runtime asset with `npm run beslishulp:build`.
 - **Login via Keycloak (SSO)** — The backend acts as an OpenID Connect backend-for-frontend: users log in through Keycloak, and a signed session cookie gates every API call. A `--dev` flag (backend) and `VITE_AUTH_BYPASS` (frontend) bypass the login for local development.
 - **User management** — Beheerders (admins) can create, edit, reset passwords for, and delete users straight from the app via the Keycloak Admin API.
@@ -52,9 +52,9 @@ A web application that helps Dutch government employees fill in AI-related compl
 
 ## Gerelateerde tools
 
-Het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties (MinBZK) heeft een vergelijkbare tool ontwikkeld: [par-dpia-form](https://github.com/MinBZK/par-dpia-form). Beide tools richten zich op het digitaal invullen van DPIA-formulieren, maar ze zijn gebouwd voor andere contexten en hebben een ander uitgangspunt.
+Binnen MinBZK bestaat al een vergelijkbare tool: [par-dpia-form](https://github.com/MinBZK/par-dpia-form). Beide tools richten zich op het digitaal invullen van DPIA-formulieren, maar ze zijn gebouwd voor andere contexten en hebben een ander uitgangspunt.
 
-| | **par-dpia-form** (MinBZK) | **findocs** (MinFin) |
+| | **par-dpia-form** | **rijksdocs** |
 |---|---|---|
 | Formulieren | DPIA, Pre-scan DPIA | AIIA, DPIA, Pre-scan DPIA, en meer |
 | Installatie | Geen — standalone HTML-bestand | Node.js + Python + Ollama/Azure OpenAI + Keycloak vereist |
@@ -65,18 +65,18 @@ Het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties (MinBZK) heeft een 
 | Rijke tekstbewerking | Nee | Ja, via Tiptap |
 | Formulierdefinities | YAML-bestanden | JSON-bestanden |
 
-**par-dpia-form** is ideaal als je een DPIA wil invullen zonder enige installatie of infrastructuur: open de HTML-pagina, vul in, exporteer naar PDF. **findocs** is geschikter wanneer je meerdere compliance-instrumenten in samenhang wil doorlopen (bijv. eerst een AIIA, daarna een DPIA waarbij relevante antwoorden al worden overgenomen), documenten wil hergebruiken en daarbij AI-hulp wil inzetten voor het formuleren van antwoorden.
+**par-dpia-form** is ideaal als je een DPIA wil invullen zonder enige installatie of infrastructuur: open de HTML-pagina, vul in, exporteer naar PDF. **rijksdocs** is geschikter wanneer je meerdere compliance-instrumenten in samenhang wil doorlopen (bijv. eerst een AIIA, daarna een DPIA waarbij relevante antwoorden al worden overgenomen), documenten wil hergebruiken en daarbij AI-hulp wil inzetten voor het formuleren van antwoorden.
 
 ### Beslishulpen: een aanvullende categorie
 
-Naast invultools bestaan er ook **beslishulpen** (kwalificatietools). Deze vullen geen assessment in, maar helpen je via een vragenboom bepalen *welke* regelgeving en verplichtingen op jouw AI-systeem van toepassing zijn — bijvoorbeeld of het onder de AI-verordening valt, wat je rol is (aanbieder, gebruiksverantwoordelijke, importeur, distributeur) en in welke risicocategorie het systeem valt. Ze zijn complementair aan findocs: een beslishulp bepaalt de *scope* (welke instrumenten je moet doorlopen), findocs helpt vervolgens bij het daadwerkelijk *invullen* ervan.
+Naast invultools bestaan er ook **beslishulpen** (kwalificatietools). Deze vullen geen assessment in, maar helpen je via een vragenboom bepalen *welke* regelgeving en verplichtingen op jouw AI-systeem van toepassing zijn — bijvoorbeeld of het onder de AI-verordening valt, wat je rol is (aanbieder, gebruiksverantwoordelijke, importeur, distributeur) en in welke risicocategorie het systeem valt. Ze zijn complementair aan rijksdocs: een beslishulp bepaalt de *scope* (welke instrumenten je moet doorlopen), rijksdocs helpt vervolgens bij het daadwerkelijk *invullen* ervan.
 
 Twee relevante voorbeelden:
 
 - [**AI-Verordening Beslishulp**](https://github.com/MinBZK/ai-verordening-beslishulp) (MinBZK) — bepaalt of en hoe de EU AI-verordening van toepassing is op een AI-systeem.
 - [**AI & Algoritmes Kwalificatie Tool (AI AQT)**](https://algorithmaudit.eu/nl/technical-tools/implementation-tool/) (Algorithm Audit) — classificeert algoritmische systemen tegen AI-verordening, AVG en kaders voor algoritmegovernance, inclusief identificatie, rol/status, risicocategorie en bijbehorende verplichtingen.
 
-| | **AI-Verordening Beslishulp** (MinBZK) | **AI AQT** (Algorithm Audit) | **findocs** (MinFin) |
+| | **AI-Verordening Beslishulp** (MinBZK) | **AI AQT** (Algorithm Audit) | **rijksdocs** |
 |---|---|---|---|
 | Type | Beslishulp / kwalificatie | Beslishulp / kwalificatie | Invultool voor assessments |
 | Doel | Bepalen of de AI-verordening van toepassing is | Identificeren en risico-classificeren van algoritmes (AI-verordening, AVG) | Invullen van AIIA, DPIA en meer |
@@ -87,9 +87,9 @@ Twee relevante voorbeelden:
 | Opslag | Sessie-gebaseerd, optionele PDF-export | Centrale opslag mogelijk voor expert-review | Server-side dossiers met authenticatie en delen |
 | Licentie | EUPL-1.2 | EUPL-1.2 | EUPL-1.2 |
 
-Een typische workflow zou zijn: gebruik eerst een **beslishulp** om vast te stellen welke assessments verplicht zijn, en gebruik daarna **findocs** (of par-dpia-form) om die assessments in te vullen.
+Een typische workflow zou zijn: gebruik eerst een **beslishulp** om vast te stellen welke assessments verplicht zijn, en gebruik daarna **rijksdocs** (of par-dpia-form) om die assessments in te vullen.
 
-Die eerste stap zit inmiddels in findocs zelf: de **AI-Verordening Beslishulp** van MinBZK is geïntegreerd als modal (zie [Features](#features)). De beslisboom wordt als gepinde kopie meegeleverd onder `vendor/ai-verordening-beslishulp/` en blijft daarmee herleidbaar tot de upstream bron; inhoudelijke vragen over de beslisboom horen bij MinBZK (ai-verordening@minbzk.nl), niet bij findocs.
+Die eerste stap zit inmiddels in rijksdocs zelf: de **AI-Verordening Beslishulp** van MinBZK is geïntegreerd als modal (zie [Features](#features)). De beslisboom wordt als gepinde kopie meegeleverd onder `vendor/ai-verordening-beslishulp/` en blijft daarmee herleidbaar tot de upstream bron; inhoudelijke vragen over de beslisboom horen bij het beslishulp-team (ai-verordening@minbzk.nl), niet bij rijksdocs.
 
 ## Form URNs
 
@@ -99,10 +99,10 @@ Every form carries a stable identifier in the shape the [MinBZK task-registry](h
 urn:nl:<authority>:<registry>:<instrument>:<major>.<minor>
 ```
 
-Upstream, `schemas/schema_instruments.json` pins instrument URNs to `^urn:nl:aivt:tr:[a-z]+:[0-9]+\.[0-9]+` — authority `aivt`, registry `tr` (e.g. `urn:nl:aivt:tr:iama:1.0`). This tool mints in the authority of the issuing organisation, `minfin`, keeping the registry segment `tr`, so the identifiers have the same shape and can sit side by side without writing into someone else's namespace:
+Upstream, `schemas/schema_instruments.json` pins instrument URNs to `^urn:nl:aivt:tr:[a-z]+:[0-9]+\.[0-9]+` — authority `aivt`, registry `tr` (e.g. `urn:nl:aivt:tr:iama:1.0`). This tool mints in the authority of the issuing organisation, `bzk`, keeping the registry segment `tr`, so the identifiers have the same shape and can sit side by side without writing into someone else's namespace:
 
 ```
-urn:nl:minfin:tr:dpia:3.0
+urn:nl:bzk:tr:dpia:3.0
 ```
 
 The instrument segment is the form id, the version segment the form's `version`. Announced forms that have no JSON yet (the placeholders in `index.json`) are pinned at `0.1`.
@@ -120,31 +120,31 @@ For the three **generated** forms (DPIA, Prescan DPIA, IAMA) the URN lives in `s
 
 | Form | URN | Task-registry instrument |
 |---|---|---|
-| Intakeformulier | `urn:nl:minfin:tr:intake:2.0` | — |
-| Projectaanbiedingsformulier | `urn:nl:minfin:tr:aanbiedingsformulier:2.0` | — |
-| PPM Projectplan | `urn:nl:minfin:tr:ppm:1.0` | — |
-| PSA | `urn:nl:minfin:tr:psa:1.0` | — |
-| Quickscan BIO2 | `urn:nl:minfin:tr:quickscan:2.0` | — |
-| Prescan DPIA | `urn:nl:minfin:tr:prescandpia:2.0` | — |
-| DPIA | `urn:nl:minfin:tr:dpia:3.0` | — |
-| AI Impact Assessment | `urn:nl:minfin:tr:aiia:2.1` | `urn:nl:aivt:tr:aiia:1.0` |
-| IAMA | `urn:nl:minfin:tr:iama:2.0` | `urn:nl:aivt:tr:iama:1.0` |
-| EU AI Act Compliance Checklist | `urn:nl:minfin:tr:euaiact:0.1` | `urn:nl:aivt:tr:ca:1.0` |
-| Data-ethiektoets | `urn:nl:minfin:tr:dataethiek:1.0` | — |
-| IHH-toets | `urn:nl:minfin:tr:ihhtoets:0.1` | — |
-| Cloudtoets | `urn:nl:minfin:tr:cloudtoets:1.0` | — |
-| BIA *(placeholder)* | `urn:nl:minfin:tr:bia:0.1` | — |
-| Datakwaliteit-assessment | `urn:nl:minfin:tr:datakwaliteit:1.0` | — |
-| Dataset-registratie (datasheet) | `urn:nl:minfin:tr:datasetregistratie:1.0` | — |
-| AI-systeemregistratie (Model Card) | `urn:nl:minfin:tr:modelcard:0.1` | — |
-| Algoritmeregister-publicatie | `urn:nl:minfin:tr:algoritmeregister:1.0` | — |
-| Verwerkingsregister (AVG art. 30) | `urn:nl:minfin:tr:verwerkingsregister:1.0` | — |
-| Toegankelijkheidsverklaring | `urn:nl:minfin:tr:toegankelijkheid:1.0` | — |
-| Restrisico-acceptatie | `urn:nl:minfin:tr:restrisico:1.1` | — |
-| Projectvoortgangsrapportage *(placeholder)* | `urn:nl:minfin:tr:voortgangsrapportage:0.1` | — |
-| Projectafwijkingsformulier *(placeholder)* | `urn:nl:minfin:tr:afwijkingsformulier:0.1` | — |
-| Evaluatieformulier *(placeholder)* | `urn:nl:minfin:tr:evaluatie:0.1` | — |
-| Risico-impactformulier *(placeholder)* | `urn:nl:minfin:tr:risicoimpact:0.1` | — |
+| Intakeformulier | `urn:nl:bzk:tr:intake:2.0` | — |
+| Projectaanbiedingsformulier | `urn:nl:bzk:tr:aanbiedingsformulier:2.0` | — |
+| PPM Projectplan | `urn:nl:bzk:tr:ppm:1.0` | — |
+| PSA | `urn:nl:bzk:tr:psa:1.0` | — |
+| Quickscan BIO2 | `urn:nl:bzk:tr:quickscan:2.0` | — |
+| Prescan DPIA | `urn:nl:bzk:tr:prescandpia:2.0` | — |
+| DPIA | `urn:nl:bzk:tr:dpia:3.0` | — |
+| AI Impact Assessment | `urn:nl:bzk:tr:aiia:2.1` | `urn:nl:aivt:tr:aiia:1.0` |
+| IAMA | `urn:nl:bzk:tr:iama:2.0` | `urn:nl:aivt:tr:iama:1.0` |
+| EU AI Act Compliance Checklist | `urn:nl:bzk:tr:euaiact:0.1` | `urn:nl:aivt:tr:ca:1.0` |
+| Data-ethiektoets | `urn:nl:bzk:tr:dataethiek:1.0` | — |
+| IHH-toets | `urn:nl:bzk:tr:ihhtoets:0.1` | — |
+| Cloudtoets | `urn:nl:bzk:tr:cloudtoets:1.0` | — |
+| BIA *(placeholder)* | `urn:nl:bzk:tr:bia:0.1` | — |
+| Datakwaliteit-assessment | `urn:nl:bzk:tr:datakwaliteit:1.0` | — |
+| Dataset-registratie (datasheet) | `urn:nl:bzk:tr:datasetregistratie:1.0` | — |
+| AI-systeemregistratie (Model Card) | `urn:nl:bzk:tr:modelcard:0.1` | — |
+| Algoritmeregister-publicatie | `urn:nl:bzk:tr:algoritmeregister:1.0` | — |
+| Verwerkingsregister (AVG art. 30) | `urn:nl:bzk:tr:verwerkingsregister:1.0` | — |
+| Toegankelijkheidsverklaring | `urn:nl:bzk:tr:toegankelijkheid:1.0` | — |
+| Restrisico-acceptatie | `urn:nl:bzk:tr:restrisico:1.1` | — |
+| Projectvoortgangsrapportage *(placeholder)* | `urn:nl:bzk:tr:voortgangsrapportage:0.1` | — |
+| Projectafwijkingsformulier *(placeholder)* | `urn:nl:bzk:tr:afwijkingsformulier:0.1` | — |
+| Evaluatieformulier *(placeholder)* | `urn:nl:bzk:tr:evaluatie:0.1` | — |
+| Risico-impactformulier *(placeholder)* | `urn:nl:bzk:tr:risicoimpact:0.1` | — |
 
 ## Form lineage
 
@@ -157,17 +157,17 @@ The `derivation` field has four values:
 | `generated` | Machine-converted from a vendored upstream definition. **Do not hand-edit the JSON** — edit the overlay and re-run `npm run forms:build`. |
 | `harmonized` | Hand-built, but field-for-field aligned with a named external instrument; imported fields carry the upstream identifier as `officialId`. |
 | `derived` | Modelled on a framework that ships no fill-in template. The concepts are the source's; the questions are ours. |
-| `original` | Written for this tool or digitised from an internal MinFin template. No external original exists. |
+| `original` | Written for this tool or digitised from an internal MinBZK template. No external original exists. |
 
 | Form | Track | Original instrument | Publisher | Derivation |
 |---|---|---|---|---|
-| Intakeformulier | Verkennen | Intakeformulier IV-verzoek (intern sjabloon) | MinFin | `original` |
-| Quickscan BIO2 | Verkennen | Classificatietoets BIO2 (`QIS BIO2 MinFin v1.0 - 10072026.xlsx`), op de [BIO2](https://bio-overheid.nl/)-handreiking dataclassificatie van de IBD | MinFin | `harmonized` |
+| Intakeformulier | Verkennen | Intakeformulier IV-verzoek (intern sjabloon) | MinBZK | `original` |
+| Quickscan BIO2 | Verkennen | Classificatietoets BIO2 (`QIS BIO2 MinBZK v1.0 - 10072026.xlsx`), op de [BIO2](https://bio-overheid.nl/)-handreiking dataclassificatie van de IBD | MinBZK | `harmonized` |
 | Prescan DPIA | Verkennen | Pre-scan DPIA v2.0 (`urn:nl:prescan`) | MinBZK | `generated` |
-| Aanbiedingsformulier | Besluiten | PPM-aanbiedingsformulier (intern sjabloon) | MinFin | `original` |
-| Restrisico-acceptatie | Besluiten | Geen extern origineel — sluitstuk van DPIA/AIIA/IAMA/BIO, naar het gangbare patroon van formele risicoacceptatie | MinFin | `original` |
-| PPM Projectplan | Ontwerpen | PPM-projectplan (intern sjabloon) | MinFin | `original` |
-| PSA | Ontwerpen | Project Start Architectuur (intern sjabloon, NORA-lagen) | MinFin | `original` |
+| Aanbiedingsformulier | Besluiten | PPM-aanbiedingsformulier (intern sjabloon) | MinBZK | `original` |
+| Restrisico-acceptatie | Besluiten | Geen extern origineel — sluitstuk van DPIA/AIIA/IAMA/BIO, naar het gangbare patroon van formele risicoacceptatie | MinBZK | `original` |
+| PPM Projectplan | Ontwerpen | PPM-projectplan (intern sjabloon) | MinBZK | `original` |
+| PSA | Ontwerpen | Project Start Architectuur (intern sjabloon, NORA-lagen) | MinBZK | `original` |
 | Datakwaliteit-assessment | Ontwerpen | DAMA-DMBOK2 hfdst. 13 (Data Quality); ISO/IEC 25012, DAMA-NL DDQ | DAMA International | `derived` |
 | Dataset-registratie | Ontwerpen | DAMA-DMBOK2 hfdst. 12 (Metadata Management); DCAT-AP-NL, MIM 1.2, "Datasheets for Datasets" | DAMA International | `derived` |
 | DPIA | Toetsen | Model DPIA Rijksdienst v3.0 (`urn:nl:dpia`) | MinBZK | `generated` |
@@ -175,8 +175,8 @@ The `derivation` field has four values:
 | IAMA | Toetsen | Impact Assessment Mensenrechten en Algoritmes v2 (`urn:nl:iama`) | MinBZK | `generated` |
 | EU AI Act Compliance Checklist | Toetsen | AI-BOK v1.0 Template 3 + task-registry `conformity_assessment_eu_ai_act` (`urn:nl:aivt:tr:ca:1.0`) | Jan Willem van Veen / MinBZK | `harmonized` |
 | Data-ethiektoets | Toetsen | DAMA-DMBOK2 hfdst. 2 (Data Handling Ethics), §3.1 — Belmont-principes | DAMA International | `derived` |
-| Cloudtoets | Toetsen | Handreiking gebruik clouddienst v1.0 (`Handreiking Toestaan Cloudtoepassingv1.0.docx`); Cloudbeleid MinFin, Rijksbreed Cloudbeleid 2022, implementatiekader 'risicoafweging cloudgebruik' | MinFin (Adviescommissie Cloudgebruik) | `harmonized` |
-| IHH-toets | Toetsen | Informatiehuishoudingstoets bij IV-verzoeken (intern sjabloon CDIO/IHH); Archiefwet, RINFIN 2022, NEN-ISO 16175-1:2020, DUTO-raamwerk Nationaal Archief | MinFin (CDIO/IHH) | `harmonized` |
+| Cloudtoets | Toetsen | Handreiking gebruik clouddienst v1.0 (`Handreiking Toestaan Cloudtoepassingv1.0.docx`); Cloudbeleid MinBZK, Rijksbreed Cloudbeleid 2022, implementatiekader 'risicoafweging cloudgebruik' | MinBZK (Adviescommissie Cloudgebruik) | `harmonized` |
+| IHH-toets | Toetsen | Informatiehuishoudingstoets bij IV-verzoeken (intern sjabloon CDIO/IHH); Archiefwet, RINFIN 2022, NEN-ISO 16175-1:2020, DUTO-raamwerk Nationaal Archief | MinBZK (CDIO/IHH) | `harmonized` |
 | AI-systeemregistratie (Model Card) | In gebruik nemen | AI-BOK v1.0 Template 2 | Jan Willem van Veen | `harmonized` |
 | Algoritmeregister-publicatie | In gebruik nemen | [Algoritmeregister](https://algoritmes.overheid.nl/) — standaard voor de publicatie van algoritmes | MinBZK | `harmonized` |
 | Verwerkingsregister | In gebruik nemen | [AVG](https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=CELEX%3A32016R0679) art. 30 lid 1 (beveiliging: art. 32 lid 1) | Europese Unie | `derived` |
@@ -188,7 +188,7 @@ The forms parked as **organisation-level** (AI Governance Charter, AI Maturity Q
 
 ## AI Body of Knowledge forms & MinBZK harmonization
 
-Two of the forms are derived from the **AI Body of Knowledge (AI-BOK v1.0)** by Jan Willem van Veen — a reference framework for AI governance, lifecycle management and organizational design, aligned with ISO 42001, the NIST AI RMF and the EU AI Act. Its appendix ships ready-to-use templates that map cleanly onto findocs' JSON form schema. Where an AI-BOK template overlaps with an authoritative Dutch government instrument, the form is **harmonized** with the corresponding MinBZK schema, and each imported field carries the upstream identifier (`officialId`) for traceability — the same approach already used for the DPIA, Pre-scan DPIA and IAMA.
+Two of the forms are derived from the **AI Body of Knowledge (AI-BOK v1.0)** by Jan Willem van Veen — a reference framework for AI governance, lifecycle management and organizational design, aligned with ISO 42001, the NIST AI RMF and the EU AI Act. Its appendix ships ready-to-use templates that map cleanly onto rijksdocs' JSON form schema. Where an AI-BOK template overlaps with an authoritative Dutch government instrument, the form is **harmonized** with the corresponding MinBZK schema, and each imported field carries the upstream identifier (`officialId`) for traceability — the same approach already used for the DPIA, Pre-scan DPIA and IAMA.
 
 | Form | Track | AI-BOK source | MinBZK harmonization |
 |---|---|---|---|
@@ -277,8 +277,8 @@ Available variables:
 | `AZURE_OPENAI_EMBEDDING_DEPLOYMENT` | _(unset)_ | Azure embedding deployment for RAG (may live on a separate resource) |
 | `CORS_ORIGINS` | `http://localhost:5173` | Allowed CORS origins |
 | `OIDC_DISCOVERY_URL` | _(see `.env.example`)_ | Keycloak OpenID Connect discovery URL |
-| `OIDC_CLIENT_ID` / `OIDC_CLIENT_SECRET` | `findocs-bff` / `dev-secret-change-me` | BFF client credentials |
-| `OIDC_ADMIN_CLIENT_ID` / `OIDC_ADMIN_CLIENT_SECRET` | `findocs-admin` / … | Service-account client for user management (Keycloak Admin API) |
+| `OIDC_CLIENT_ID` / `OIDC_CLIENT_SECRET` | `rijksdocs-bff` / `dev-secret-change-me` | BFF client credentials |
+| `OIDC_ADMIN_CLIENT_ID` / `OIDC_ADMIN_CLIENT_SECRET` | `rijksdocs-admin` / … | Service-account client for user management (Keycloak Admin API) |
 | `OIDC_REDIRECT_URI` | `http://localhost:8080/api/auth/callback` | OIDC redirect URI |
 | `SESSION_SECRET` | `change-me-…` | Secret used to sign the session cookie (`openssl rand -hex 32`) |
 | `SESSION_HTTPS_ONLY` | `false` | Set to `true` in production |

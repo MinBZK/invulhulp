@@ -41,7 +41,7 @@ backend = create_backend()
 NOTULEN = """\
 Notulen projectoverleg Slimme Documentstromen — 14 mei 2026
 
-Aanwezig: Anouk de Wit (projectleider, Belastingdienst), Joris van Dam \
+Aanwezig: Anouk de Wit (projectleider, RvIG), Joris van Dam \
 (data scientist, CDIO-office), Fatima el Amrani (privacy officer), \
 Stef Bakker (architect).
 
@@ -61,10 +61,10 @@ dit moet vóór de pilot zijn afgerond. Besluit: de DPIA wordt uiterlijk \
 30 juni 2026 opgeleverd door het privacy-team.
 
 4. Vervolg
-De pilot start op 1 september 2026 bij de directie Particulieren, mits de \
+De pilot start op 1 september 2026 bij de directie Dienstverlening, mits de \
 DPIA is afgerond. Stef werkt het architectuurplaatje uit vóór het volgende \
 overleg. Contactpersoon voor dit traject is Anouk de Wit, bereikbaar via \
-anouk.dewit@belastingdienst.nl en 06-21458877.
+anouk.dewit@rvig.nl en 06-21458877.
 
 Actiepunten:
 - DPIA opleveren (privacy-team, 30 juni 2026)
@@ -173,7 +173,7 @@ EXTRACT_CASES = [
         id="email-present",
         question="E-mailadres contactpersoon",
         question_type="text", field_format="email",
-        checks=[check_equals("anouk.dewit@belastingdienst.nl")],
+        checks=[check_equals("anouk.dewit@rvig.nl")],
     ),
     dict(
         id="phone-present",
@@ -642,7 +642,7 @@ async def run_extract(case: dict) -> dict:
         question_type=case["question_type"],
         field_format=case["field_format"],
         form_context=(
-            "Intake-formulier voor IV-verzoeken bij het Ministerie van Financiën: "
+            "Intake-formulier voor IV-verzoeken bij het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties: "
             "beschrijft doel, doelgroep, risico's en benodigde middelen van een "
             "nieuw informatievoorzieningstraject."
         ),

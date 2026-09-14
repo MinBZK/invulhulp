@@ -2375,7 +2375,7 @@
     "sourceQuestionIds": [
       "intake_b.omschrijving"
     ],
-    "synthesisHint": "Leid uit de omschrijving van het IV-verzoek af binnen welk(e) bedrijfsproces(sen) de applicatie of het systeem wordt ingezet. Benoem de processen, niet de techniek, en verwijs waar mogelijk naar een proces uit de Selectielijst van het ministerie van Financiën."
+    "synthesisHint": "Leid uit de omschrijving van het IV-verzoek af binnen welk(e) bedrijfsproces(sen) de applicatie of het systeem wordt ingezet. Benoem de processen, niet de techniek, en verwijs waar mogelijk naar een proces uit de Selectielijst van het ministerie van Binnenlandse Zaken en Koninkrijksrelaties."
   },
   {
     "targetFormId": "ihhtoets",

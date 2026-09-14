@@ -117,7 +117,7 @@ app.include_router(collab.router)
 
 SYSTEM_PROMPT = (
     "Je bent een assistent die helpt bij het invullen van AI Impact Assessments "
-    "voor de Nederlandse overheid (Ministerie van Financiën - MinFin).\n\n"
+    "voor de Nederlandse overheid (Ministerie van Binnenlandse Zaken en Koninkrijksrelaties - MinBZK).\n\n"
     "Jouw taak is UITSLUITEND om tekst beter leesbaar en duidelijker te maken.\n\n"
     "Harde regels:\n"
     "1. Voeg NOOIT nieuwe feiten, namen, aantallen of claims toe die niet in de "
@@ -158,7 +158,7 @@ SYSTEM_PROMPT = (
 # of rules, so we never send blocks that don't apply to the current field.
 
 _EXTRACT_BASE = (
-    "Je helpt ambtenaren van het Ministerie van Financiën een formulier in te "
+    "Je helpt ambtenaren van het Ministerie van Binnenlandse Zaken en Koninkrijksrelaties een formulier in te "
     "vullen. Je krijgt één doelvraag en een set fragmenten uit brondocumenten "
     "(notulen, brainstorms, agenda's). Beantwoord de doelvraag UITSLUITEND met "
     "feiten die letterlijk in de fragmenten staan.\n\n"
@@ -183,8 +183,8 @@ _EXTRACT_FORMAT_BLOCKS = {
     "email": (
         "Dit veld vraagt om een E-MAILADRES. Geef uitsluitend één e-mailadres in "
         "de vorm naam@domein.nl, zonder label of extra tekst.\n"
-        "  Fout: 'E-mailadres: anouk.dewit@belastingdienst.nl'   Fout: 'Anouk de Wit'\n"
-        "  Goed: 'anouk.dewit@belastingdienst.nl'\n"
+        "  Fout: 'E-mailadres: anouk.dewit@rvig.nl'   Fout: 'Anouk de Wit'\n"
+        "  Goed: 'anouk.dewit@rvig.nl'\n"
         "Staat er geen geldig e-mailadres in de fragmenten? Antwoord dan "
         "'Onvoldoende informatie in de brondocumenten.' — geef NOOIT een naam of "
         "iets anders als vervanging.\n\n"
@@ -199,7 +199,7 @@ _EXTRACT_FORMAT_BLOCKS = {
     "shorttext": (
         "Dit is een KORT feitelijk veld (bijv. naam, afdeling, datum). Geef "
         "uitsluitend de gevraagde waarde, zonder label en zonder extra zin.\n"
-        "  Fout: 'Naam opdrachtgever: Belastingdienst'   Goed: 'Belastingdienst'\n"
+        "  Fout: 'Naam opdrachtgever: RvIG'   Goed: 'RvIG'\n"
         "Let op: de waarde moet precies datgene zijn waar het veld om vraagt. "
         "Controleer vóór je antwoordt: staat er in de fragmenten een waarde "
         "die EXPLICIET deze rol of dit kenmerk heeft? Voorbeeld: vraagt het "
@@ -273,7 +273,7 @@ def _table_format_block(columns: list["TableColumn"]) -> str:
         "laatste rij één regel met precies '---' en daarna de toelichting.\n"
         f"Voorbeeld met kolommen '{example_header}':\n"
         "Anouk de Wit | Projectleider\n"
-        "Belastingdienst | Opdrachtgever\n"
+        "RvIG | Opdrachtgever\n"
         "---\n"
         "Beide rollen staan in de notulen van 12 maart.\n"
         "Staat er geen enkel passend item in de fragmenten? Antwoord dan "
@@ -305,7 +305,7 @@ def _build_extract_system_prompt(
 
 SYNTHESIZE_SYSTEM_PROMPT = (
     "Je bent een assistent die helpt bij het invullen van projectmanagement- en compliance-documenten "
-    "voor de Nederlandse overheid (Ministerie van Financiën - MinFin).\n\n"
+    "voor de Nederlandse overheid (Ministerie van Binnenlandse Zaken en Koninkrijksrelaties - MinBZK).\n\n"
     "Je krijgt antwoorden uit een bronformulier en een specifieke doelvraag. "
     "Jouw taak is om een volledig nieuw antwoord te schrijven dat:\n"
     "1. Uitsluitend gebaseerd is op de feiten uit de bronantwoorden (voeg geen nieuwe feiten toe)\n"
@@ -334,7 +334,7 @@ SYNTHESIZE_SYSTEM_PROMPT = (
 # earliest answer), so a rewritten answer never needs to grow.
 SMOOTH_SYSTEM_PROMPT = (
     "Je bent eindredacteur van een ingevuld formulier voor de Nederlandse "
-    "overheid (Ministerie van Financiën - MinFin). Je krijgt de antwoorden van "
+    "overheid (Ministerie van Binnenlandse Zaken en Koninkrijksrelaties - MinBZK). Je krijgt de antwoorden van "
     "één sectie van het formulier, plus ter context antwoorden uit eerdere "
     "secties. Herschrijf UITSLUITEND de sectie-antwoorden.\n\n"
     "JOUW BELANGRIJKSTE TAAK: hele zinnen en alinea's die inhoudelijk al in "

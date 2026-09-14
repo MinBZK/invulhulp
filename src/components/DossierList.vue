@@ -5,9 +5,9 @@
       <!-- Hero -->
       <section class="dossier-list-hero">
         <div class="dossier-list-hero__content">
-          <nldd-title size="1"><h1 class="dossier-list-hero__title">FinDocs</h1></nldd-title>
+          <nldd-title size="1"><h1 class="dossier-list-hero__title">RijksDocs</h1></nldd-title>
           <nldd-text size="lg" color="inherit" class="dossier-list-hero__subtitle">
-            Digitale instrumenten voor IV-projecten, privacy en AI-impact assessments — Ministerie van Financiën
+            Digitale instrumenten voor IV-projecten, privacy en AI-impact assessments — Ministerie van Binnenlandse Zaken en Koninkrijksrelaties
           </nldd-text>
         </div>
       </section>
@@ -21,7 +21,7 @@
                  van deze lijst bestaat niet en er was nergens een eerste
                  instructie. Bij één ongebruikt dossier staat die hier. -->
             <nldd-text size="sm" color="inherit" class="dossier-list__desc" v-if="isFirstVisit">
-              Open je dossier en upload je eerste document — daarna vult FinDocs de formulieren
+              Open je dossier en upload je eerste document — daarna vult RijksDocs de formulieren
               voor je in, met een bronverwijzing per antwoord.
             </nldd-text>
             <nldd-text size="sm" color="inherit" class="dossier-list__desc" v-else>
