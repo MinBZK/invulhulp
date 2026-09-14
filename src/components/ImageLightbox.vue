@@ -7,27 +7,27 @@
   >
     <div class="invulhulp-modal__container">
       <header class="invulhulp-modal__header">
-        <h3 :id="titleId" class="utrecht-heading-3 invulhulp-modal__title">
+        <nldd-title size="3"><h3 :id="titleId" class="invulhulp-modal__title">
           {{ title }}
-        </h3>
+        </h3></nldd-title>
         <button type="button" class="invulhulp-modal__close" aria-label="Sluiten" @click="close">
           <span aria-hidden="true">×</span>
         </button>
       </header>
 
-      <hr class="rvo-hr invulhulp-modal__divider" />
+      <nldd-divider class="invulhulp-modal__divider" />
 
       <div class="invulhulp-modal__body image-lightbox__body">
         <img v-if="src" class="image-lightbox__image" :src="src" :alt="title" />
       </div>
 
-      <p v-if="src" class="rvo-text rvo-text--sm image-lightbox__footer">
+      <nldd-text color="inherit" size="sm" class="image-lightbox__footer" v-if="src">
         <!-- A diagram lifted from a PDF can be denser than 80vh allows; the raw
              image opens at its own resolution for the fine print. -->
-        <a class="rvo-link" :href="src" target="_blank" rel="noopener">
+        <nldd-link :href="src" target="_blank" rel="noopener">
           Open op ware grootte in een nieuw tabblad
-        </a>
-      </p>
+        </nldd-link>
+      </nldd-text>
     </div>
   </dialog>
 </template>
@@ -79,26 +79,26 @@ defineExpose({ open })
 }
 
 .invulhulp-modal__container {
-  background: var(--rvo-color-wit);
-  border-radius: var(--rvo-border-radius-lg);
+  background: var(--semantics-surfaces-base-background-color);
+  border-radius: var(--primitives-corner-radius-lg);
   box-shadow: 0 0 1em 0 rgb(0 0 0 / 30%);
-  padding: var(--rvo-space-md);
+  padding: var(--primitives-space-16);
   display: flex;
   flex-direction: column;
-  gap: var(--rvo-space-sm);
+  gap: var(--primitives-space-12);
 }
 
 .invulhulp-modal__header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: var(--rvo-space-sm);
+  gap: var(--primitives-space-12);
 }
 
 .invulhulp-modal__title {
   margin: 0;
   flex: 1;
-  color: var(--rvo-color-lintblauw);
+  color: var(--semantics-content-accent-color);
   word-break: break-word;
 }
 
@@ -109,7 +109,7 @@ defineExpose({ open })
   line-height: 1;
   cursor: pointer;
   color: var(--invulhulp-color-text-muted);
-  padding: 0 var(--rvo-space-3xs);
+  padding: 0 var(--primitives-space-2);
 }
 
 .invulhulp-modal__divider {
@@ -126,7 +126,7 @@ defineExpose({ open })
   /* Leaves room for the header, footer link and the dialog's own margins. */
   max-block-size: 76vh;
   object-fit: contain;
-  background: var(--rvo-color-grijs-100, #f3f3f3);
+  background: var(--semantics-surfaces-tinted-background-color, #f3f3f3);
 }
 
 .image-lightbox__footer {

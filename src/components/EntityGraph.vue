@@ -2,29 +2,27 @@
   <section :id="id" class="entity-graph" aria-labelledby="entity-graph-heading">
     <div class="entity-graph__header">
       <div>
-        <h3 id="entity-graph-heading" class="rvo-heading rvo-heading--md entity-graph__title">
+        <nldd-title size="3"><h3 class="entity-graph__title" id="entity-graph-heading">
           Entiteitengrafiek
-        </h3>
-        <p class="rvo-text rvo-text--sm entity-graph__desc">
+        </h3></nldd-title>
+        <nldd-text color="inherit" size="sm" class="entity-graph__desc">
           Verbindingen tussen entiteiten en brondocumenten. Entiteiten die in meerdere documenten voorkomen zijn extra groot weergegeven.
-        </p>
+        </nldd-text>
       </div>
-      <button
-        type="button"
-        class="rvo-button rvo-button--secondary rvo-button--size-sm"
+      <nldd-button
+        variant="secondary"
+        size="sm"
+        text="Sluiten"
         @click="$emit('close')"
-      >
-        Sluiten
-      </button>
+      />
     </div>
 
     <fieldset class="entity-graph__controls">
       <legend class="invulhulp-visually-hidden">Categorieën filteren</legend>
       <label v-for="cat in categories" :key="cat.key" class="entity-graph__filter">
-        <input
-          type="checkbox"
-          class="rvo-checkbox__input"
+        <nldd-checkbox-field
           :checked="visible[cat.key]"
+          :accessible-label="cat.label"
           @change="toggle(cat.key)"
         />
         <span
@@ -36,9 +34,9 @@
       </label>
     </fieldset>
 
-    <p v-if="!hasAnyEntities" class="entity-graph__empty rvo-text rvo-text--sm">
+    <nldd-text color="inherit" size="sm" class="entity-graph__empty" v-if="!hasAnyEntities">
       Nog geen entiteiten beschikbaar — wacht tot indexering klaar is.
-    </p>
+    </nldd-text>
 
     <div
       v-show="hasAnyEntities"
@@ -254,22 +252,22 @@ watch(visible, render, { deep: true })
 
 <style scoped>
 .entity-graph {
-  margin-block-start: var(--rvo-space-lg);
-  padding: var(--rvo-space-md);
+  margin-block-start: var(--primitives-space-24);
+  padding: var(--primitives-space-16);
   border: 1px solid var(--invulhulp-color-border);
-  border-radius: var(--rvo-border-radius-md);
-  background: var(--rvo-color-grijs-050, #fafafa);
+  border-radius: var(--primitives-corner-radius-md);
+  background: var(--semantics-surfaces-tinted-background-color, #fafafa);
 }
 
 .entity-graph__header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: var(--rvo-space-md);
-  margin-block-end: var(--rvo-space-sm);
+  gap: var(--primitives-space-16);
+  margin-block-end: var(--primitives-space-12);
 }
 
-.entity-graph__title { margin: 0 0 var(--rvo-space-3xs); }
+.entity-graph__title { margin: 0 0 var(--primitives-space-2); }
 
 .entity-graph__desc {
   margin: 0;
@@ -279,8 +277,8 @@ watch(visible, render, { deep: true })
 .entity-graph__controls {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--rvo-space-sm) var(--rvo-space-md);
-  margin: 0 0 var(--rvo-space-sm);
+  gap: var(--primitives-space-12) var(--primitives-space-16);
+  margin: 0 0 var(--primitives-space-12);
   padding: 0;
   border: 0;
 }
@@ -288,8 +286,8 @@ watch(visible, render, { deep: true })
 .entity-graph__filter {
   display: inline-flex;
   align-items: center;
-  gap: var(--rvo-space-2xs);
-  font-size: var(--rvo-font-size-sm);
+  gap: var(--primitives-space-4);
+  font-size: var(--primitives-font-size-90);
   cursor: pointer;
   user-select: none;
 }
@@ -316,13 +314,13 @@ watch(visible, render, { deep: true })
 .entity-graph__canvas {
   width: 100%;
   height: 560px;
-  background: var(--rvo-color-wit);
+  background: var(--semantics-surfaces-base-background-color);
   border: 1px solid var(--invulhulp-color-border);
-  border-radius: var(--rvo-border-radius-md);
+  border-radius: var(--primitives-corner-radius-md);
 }
 
 .entity-graph__empty {
-  margin: var(--rvo-space-md) 0 0 0;
+  margin: var(--primitives-space-16) 0 0 0;
   color: var(--invulhulp-color-text-subtle);
   font-style: italic;
 }

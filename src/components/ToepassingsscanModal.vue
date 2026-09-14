@@ -9,15 +9,15 @@
 
       <header class="scan__header">
         <div class="scan__brand">
-          <span class="rvo-icon rvo-icon--xl scan__brand-icon" aria-hidden="true" />
+          <nldd-icon class="scan__brand-icon" name="magnifier" size="48" />
           <div>
-            <h2 id="scan-title" class="rvo-heading rvo-heading--xl scan__title">Toepassingsscan</h2>
-            <p class="rvo-text rvo-text--sm scan__subtitle">
+            <nldd-title size="2"><h2 class="scan__title" id="scan-title">Toepassingsscan</h2></nldd-title>
+            <nldd-text line-height="snug" color="inherit" size="sm" class="scan__subtitle">
               Wat doet en levert dit project? Daarmee bepalen we welke formulieren hier gelden.
-            </p>
+            </nldd-text>
           </div>
         </div>
-        <!-- Plain button, not rvo-button: on the dark header an rvo-button
+        <!-- Plain button, not nldd-button: on the dark header a filled button
              variant would need overriding anyway. Mirrors BeslishulpModal. -->
         <button type="button" class="scan__close" aria-label="Sluiten" @click="close">
           <span aria-hidden="true">×</span>
@@ -28,54 +28,49 @@
 
         <!-- Six independent questions, so they go on one page: a wizard would
              add eight screens of chrome around forty words of question. Each is
-             a fieldset/legend with native inputs and the RVO classes, exactly as
+             a labelled group of NLDD radio or checkbox fields, exactly as
              QuestionItem renders a form question. -->
         <ol class="scan__questions">
           <li v-for="question in SCAN_QUESTIONS" :key="question.id">
-            <fieldset class="rvo-form-fieldset scan__fieldset">
-              <legend class="rvo-form-fieldset__legend scan__legend">
+            <div v-if="question.type === 'single'" class="scan__fieldset">
+              <p :id="`${question.id}-label`" class="scan__legend">
                 <span class="scan__question">{{ question.vraag }}</span>
-              </legend>
-              <p v-if="question.toelichting" class="rvo-text rvo-text--sm scan__explanation">
+              </p>
+              <p v-if="question.toelichting" class="scan__explanation">
                 {{ question.toelichting }}
               </p>
+              <nldd-radio-button-group
+                :name="question.id"
+                :accessible-labeled-by="`${question.id}-label`"
+                @change="chooseSingle(question.id, $event.detail.value)"
+              >
+                <nldd-radio-button-field
+                  v-for="option in question.opties"
+                  :key="option.id"
+                  :label="optionLabel(option)"
+                  :value="option.id"
+                  :checked="isChosen(question.id, option.id)"
+                />
+              </nldd-radio-button-group>
+            </div>
 
-              <div v-if="question.type === 'single'" class="rvo-radio-button__group">
-                <label v-for="option in question.opties" :key="option.id" class="rvo-radio-button">
-                  <input
-                    type="radio"
-                    class="utrecht-radio-button utrecht-radio-button--html-input"
-                    :name="question.id"
-                    :value="option.id"
-                    :checked="isChosen(question.id, option.id)"
-                    @change="chooseSingle(question.id, option.id)"
-                  />
-                  <span class="rvo-radio-button__label">
-                    {{ option.label }}
-                    <span v-if="option.hint" class="rvo-text rvo-text--sm rvo-text--subtle scan__hint">
-                      {{ option.hint }}
-                    </span>
-                  </span>
-                </label>
-              </div>
-
-              <div v-else class="rvo-checkbox__group">
-                <label v-for="option in question.opties" :key="option.id" class="rvo-checkbox">
-                  <input
-                    type="checkbox"
-                    class="rvo-checkbox__input"
-                    :name="question.id"
-                    :value="option.id"
-                    :checked="isChosen(question.id, option.id)"
-                    @change="toggleMulti(question.id, option.id)"
-                  />
-                  <span class="rvo-checkbox__label">
-                    {{ option.label }}
-                    <span v-if="option.hint" class="rvo-text rvo-text--sm rvo-text--subtle scan__hint">
-                      {{ option.hint }}
-                    </span>
-                  </span>
-                </label>
+            <fieldset v-else class="scan__fieldset">
+              <legend class="scan__legend">
+                <span class="scan__question">{{ question.vraag }}</span>
+              </legend>
+              <p v-if="question.toelichting" class="scan__explanation">
+                {{ question.toelichting }}
+              </p>
+              <div class="scan__options">
+                <nldd-checkbox-field
+                  v-for="option in question.opties"
+                  :key="option.id"
+                  :label="optionLabel(option)"
+                  :name="question.id"
+                  :value="option.id"
+                  :checked="isChosen(question.id, option.id)"
+                  @change="toggleMulti(question.id, option.id)"
+                />
               </div>
             </fieldset>
           </li>
@@ -84,68 +79,65 @@
         <!-- The consequence list, live: answering a question moves a form in it
              immediately, which is the whole argument for asking. -->
         <section class="scan__result" aria-labelledby="scan-result-title">
-          <h3 id="scan-result-title" class="rvo-heading rvo-heading--md scan__result-title">
+          <nldd-title size="3"><h3 class="scan__result-title" id="scan-result-title">
             Wat dit betekent voor de formulieren
-          </h3>
+          </h3></nldd-title>
 
           <!-- The list updates on every answer. Announcing all ten rows each
                time would drown a screenreader, so the live region carries the
                tally and the list itself stays quiet. -->
           <p class="invulhulp-visually-hidden" role="status">{{ tally }}</p>
 
-          <p v-if="consequences.length === 0" class="rvo-text rvo-text--sm rvo-text--subtle">
+          <nldd-text size="sm" color="secondary" v-if="consequences.length === 0">
             Beantwoord de vragen hierboven — hier verschijnt meteen per formulier of het geldt.
-          </p>
-          <ul v-else class="rvo-item-list scan__consequences">
-            <li v-for="row in consequences" :key="row.id" class="rvo-item-list__item scan__consequence">
+          </nldd-text>
+          <ul v-else class="invulhulp-item-list scan__consequences">
+            <li v-for="row in consequences" :key="row.id" class="invulhulp-item-list__item scan__consequence">
               <span class="scan__consequence-title">{{ row.title }}</span>
-              <span class="rvo-tag rvo-tag--pill" :class="tagModifier(row.status)">
-                {{ applicabilityLabel(row.status) }}
-              </span>
-              <span class="rvo-text rvo-text--sm rvo-text--subtle scan__consequence-reason">{{ row.reason }}</span>
+              <nldd-tag
+                size="sm"
+                :color="tagColor(row.status)"
+                :text="applicabilityLabel(row.status)"
+              />
+              <span class="invulhulp-text--sm invulhulp-text--subtle scan__consequence-reason">{{ row.reason }}</span>
             </li>
           </ul>
 
-          <div
+          <nldd-banner
+            variant="accent"
+            class="scan__alert"
             v-if="!hasBeslishulp && kenmerken.algoritme_of_ai !== false"
-            class="rvo-alert rvo-alert--info rvo-alert--padding-md scan__alert"
           >
-            <!-- One element inside the container: rvo-alert lays its children out
-                 in a row, so a bare <strong> would sit beside the text. -->
-            <div class="rvo-alert__container">
-              <div>
+            <div class="scan__alert-body">
                 Of de AI-verordening geldt, bepaalt de <strong>Beslishulp AI-verordening</strong> —
                 op de dossierpagina bij de EU AI Act-kaart.
               </div>
-            </div>
-          </div>
+          </nldd-banner>
 
-          <p class="rvo-text rvo-text--sm rvo-text--subtle scan__note">
+          <nldd-text size="sm" color="secondary" class="scan__note">
             Advies, geen juridisch oordeel: leg een "niet van toepassing" voor aan de FG, privacy
             officer of CISO.
-          </p>
+          </nldd-text>
         </section>
       </div>
 
       <footer class="scan__footer">
-        <div class="rvo-action-group scan__footer-actions">
-          <button
-            type="button"
-            class="rvo-button rvo-button--primary rvo-button--size-sm"
+        <div class="invulhulp-row invulhulp-gap--sm scan__footer-actions">
+          <nldd-button
+            variant="primary"
+            size="sm"
+            text="Opslaan in dossier"
             :disabled="!store.canEdit"
             @click="save"
-          >
-            Opslaan in dossier
-          </button>
-          <button
-            type="button"
-            class="rvo-button rvo-button--tertiary rvo-button--size-sm"
+          />
+          <nldd-button
+            variant="neutral-transparent"
+            size="sm"
+            text="Opnieuw beginnen"
             @click="restart"
-          >
-            Opnieuw beginnen
-          </button>
+          />
         </div>
-        <p v-if="savedNotice" class="rvo-text rvo-text--sm scan__saved" role="status">{{ savedNotice }}</p>
+        <nldd-text color="inherit" size="sm" class="scan__saved" v-if="savedNotice" role="status">{{ savedNotice }}</nldd-text>
       </footer>
     </div>
   </dialog>
@@ -203,16 +195,25 @@ const tally = computed(() => {
   return `${count('verplicht')} van toepassing, ${count('mogelijk')} mogelijk relevant, ${count('nvt')} niet van toepassing.`
 })
 
-/** Stock rvo-tag modifiers, so the scan introduces no colours of its own.
+/** Stock nldd-tag colours, so the scan introduces none of its own.
  *  "Van toepassing" stays the neutral default — it is the ordinary case; the
- *  two states worth noticing get the warning and subtle treatments. */
-function tagModifier(status: ApplicabilityStatus): string {
-  if (status === 'mogelijk') return 'rvo-tag--warning'
-  if (status === 'nvt') return 'scan__tag--nvt'
-  return ''
+ *  one state worth noticing gets the warning treatment, and "niet van
+ *  toepassing" recedes into the secondary channel. */
+function tagColor(status: ApplicabilityStatus): string {
+  if (status === 'mogelijk') return 'warning'
+  if (status === 'nvt') return 'neutral'
+  return 'accent'
 }
 
 // ---- Answering ------------------------------------------------------------
+/** nldd-radio-button-field en -checkbox-field nemen hun label als platte
+ *  tekst — er is geen slot voor een tweede regel. De hint schuift daarom in
+ *  het label zelf, zodat hij zichtbaar blijft én in de toegankelijke naam
+ *  staat, zoals in de oude <label>-opmaak. */
+function optionLabel(option: { label: string; hint?: string }): string {
+  return option.hint ? `${option.label} — ${option.hint}` : option.label
+}
+
 function isChosen(questionId: string, optionId: string): boolean {
   return (answers.value[questionId] ?? []).includes(optionId)
 }
@@ -283,7 +284,7 @@ defineExpose({ open })
 
 <style scoped>
 /* Layout and the modal shell only — every colour, space and font value is an
-   RVO token. The shell mirrors BeslishulpModal (their styles are scoped, so it
+   NLDD token. The shell mirrors BeslishulpModal (their styles are scoped, so it
    is repeated here rather than shared — same trade-off as ConfirmDialog). */
 .invulhulp-modal {
   border: 0;
@@ -300,8 +301,8 @@ defineExpose({ open })
 }
 
 .scan__container {
-  background: var(--rvo-color-wit);
-  border-radius: var(--rvo-border-radius-lg);
+  background: var(--semantics-surfaces-base-background-color);
+  border-radius: var(--primitives-corner-radius-lg);
   box-shadow: 0 0 1.5em 0 rgb(0 0 0 / 35%);
   display: flex;
   flex-direction: column;
@@ -317,69 +318,62 @@ defineExpose({ open })
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: var(--rvo-space-md);
-  padding: var(--rvo-space-xl);
-  background: var(--rvo-color-lintblauw);
-  color: var(--rvo-color-wit);
+  gap: var(--primitives-space-16);
+  padding: var(--primitives-space-32);
+  background: var(--semantics-content-accent-color);
+  color: var(--semantics-surfaces-base-background-color);
 }
 
 .scan__brand {
   display: flex;
   align-items: flex-start;
-  gap: var(--rvo-space-md);
+  gap: var(--primitives-space-16);
 }
 
-/* .rvo-icon zet alleen een min-inline-size — zonder expliciete box heeft het
-   masker geen hoogte om in te tekenen: een onzichtbaar icoon dat wél breedte
-   inneemt. Zelfde patroon als de andere hergekleurde iconen in de app. */
 .scan__brand-icon {
-  display: inline-block;
-  inline-size: var(--rvo-size-xl);
-  block-size: var(--rvo-size-xl);
-  margin-block-start: var(--rvo-space-3xs);
+  margin-block-start: var(--primitives-space-2);
   flex-shrink: 0;
-  background-color: currentColor;
-  /* Static stylesheet url() — a runtime url() renders as a white square in the
-     production build (see the icon-mask note in DossierDetail.vue). */
-  -webkit-mask: url('@nl-rvo/assets/icons/functioneel/zoek.svg') center / contain no-repeat;
-  mask: url('@nl-rvo/assets/icons/functioneel/zoek.svg') center / contain no-repeat;
 }
 
 .scan__title {
   margin: 0;
-  color: var(--rvo-color-wit);
+  color: var(--semantics-surfaces-base-background-color);
 }
 
 .scan__subtitle {
-  margin: var(--rvo-space-xs) 0 0;
+  margin: var(--primitives-space-8) 0 0;
   max-inline-size: 56ch;
-  line-height: var(--rvo-line-height-md);
   /* Solid tint rather than an opacity, so the contrast ratio is knowable. */
-  color: var(--rvo-color-lintblauw-150);
+  color: var(--semantics-categories-accent-tinted-background-color);
 }
 
 .scan__close {
   font: inherit;
-  font-size: var(--rvo-font-size-xl);
+  font-size: var(--primitives-font-size-300);
   line-height: 1;
   cursor: pointer;
-  padding: 0 var(--rvo-space-2xs);
-  color: var(--rvo-color-wit);
+  padding: 0 var(--primitives-space-4);
+  color: var(--semantics-surfaces-base-background-color);
   background: transparent;
   border: 0;
 }
 
 /* --- Body --- */
 .scan__body {
-  padding: var(--rvo-space-xl);
+  padding: var(--primitives-space-32);
   overflow-y: auto;
 }
 
-/* Grijze vlak van .rvo-form-fieldset eraf, net als in QuestionItem.vue — dat
-   vlak kan een vraag niet netjes omsluiten: een native <legend> valt buiten de
-   padding-box (Chrome legt de bovenrand van de fieldset op halve legend-hoogte),
-   dus de kicker staat erboven en de vraag klemt tegen de bovenrand. De vraag
-   staat hier op het witte corpus, met de ruimte van .scan__body eromheen. */
+/* De vraag staat op het witte corpus, met de ruimte van .scan__body eromheen —
+   geen eigen vlak of rand. Bij het meerkeuzetype is dit een echte <fieldset>
+   (de groepssemantiek moet ergens vandaan komen); bij het enkelkeuzetype doet
+   nldd-radio-button-group dat zelf en is dit een gewone <div>. */
+.scan__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--semantics-forms-gap-tight, var(--primitives-space-8));
+}
+
 .scan__fieldset {
   background: transparent;
   border: 0;
@@ -396,44 +390,38 @@ defineExpose({ open })
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--rvo-space-xl);
+  gap: var(--primitives-space-32);
 }
 
 .scan__legend {
   padding: 0;
-  margin: 0 0 var(--rvo-space-2xs);
+  margin: 0 0 var(--primitives-space-4);
 }
 
 .scan__question {
-  font-size: var(--rvo-font-size-lg);
-  font-weight: var(--rvo-font-weight-bold);
-  line-height: var(--rvo-line-height-sm);
+  font-size: var(--primitives-font-size-200);
+  font-weight: var(--primitives-font-weight-body-bold);
+  line-height: var(--primitives-line-height-tight);
 }
 
 .scan__explanation {
-  margin: 0 0 var(--rvo-space-sm);
+  margin: 0 0 var(--primitives-space-12);
   max-inline-size: 68ch;
 }
 
 /* --- Result --- */
 .scan__result {
-  margin-block-start: var(--rvo-space-xl);
-  padding-block-start: var(--rvo-space-lg);
-  border-block-start: 1px solid var(--rvo-color-grijs-300);
+  margin-block-start: var(--primitives-space-32);
+  padding-block-start: var(--primitives-space-24);
+  border-block-start: 1px solid var(--semantics-dividers-color);
 }
 
 .scan__result-title {
-  margin: 0 0 var(--rvo-space-sm);
-}
-
-/* The hint under an option label: a block inside the RVO label span, so the
-   whole thing stays one click target and one accessible name. */
-.scan__hint {
-  display: block;
+  margin: 0 0 var(--primitives-space-12);
 }
 
 .scan__note {
-  margin: var(--rvo-space-md) 0 0;
+  margin: var(--primitives-space-16) 0 0;
   max-inline-size: 68ch;
 }
 
@@ -445,11 +433,11 @@ defineExpose({ open })
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: var(--rvo-space-3xs) var(--rvo-space-sm);
+  gap: var(--primitives-space-2) var(--primitives-space-12);
 }
 
 .scan__consequence-title {
-  font-weight: var(--rvo-font-weight-semibold);
+  font-weight: var(--primitives-font-weight-body-semi-bold);
 }
 
 .scan__consequence-reason {
@@ -458,23 +446,23 @@ defineExpose({ open })
 
 /* Not-applicable rows are quieter than the rest of the list, but never hidden. */
 .scan__tag--nvt {
-  color: var(--rvo-color-grijs-700);
+  color: var(--semantics-content-secondary-color);
 }
 
 .scan__alert {
-  margin-block-start: var(--rvo-space-md);
+  margin-block-start: var(--primitives-space-16);
 }
 
 /* Lopende tekst in een gekleurd vlak heeft lucht nodig: padding-md in plaats
    van -sm op het vlak zelf, en een ruimere regelafstand erbinnen. */
-.scan__alert .rvo-alert__container {
-  line-height: var(--rvo-line-height-md);
+.scan__alert-body {
+  line-height: var(--primitives-line-height-snug);
   max-inline-size: 72ch;
 }
 
 .scan__saved {
   margin: 0;
-  color: var(--rvo-color-groen);
+  color: var(--semantics-content-success-color);
 }
 
 /* --- Footer --- */
@@ -483,15 +471,15 @@ defineExpose({ open })
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: var(--rvo-space-sm);
-  padding: var(--rvo-space-md) var(--rvo-space-xl);
-  border-block-start: 1px solid var(--rvo-color-grijs-300);
-  background: var(--rvo-color-grijs-100);
+  gap: var(--primitives-space-12);
+  padding: var(--primitives-space-16) var(--primitives-space-32);
+  border-block-start: 1px solid var(--semantics-dividers-color);
+  background: var(--semantics-surfaces-tinted-background-color);
 }
 
 .scan__footer-actions {
   display: flex;
-  gap: var(--rvo-space-2xs);
+  gap: var(--primitives-space-4);
   flex-wrap: wrap;
 }
 </style>

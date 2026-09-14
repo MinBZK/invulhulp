@@ -10,7 +10,7 @@
 
       <header class="beslishulp__header">
         <div class="beslishulp__brand">
-          <span class="beslishulp__brand-icon" aria-hidden="true" />
+          <nldd-icon class="beslishulp__brand-icon" name="score-meter" size="32" />
           <div>
             <h2 id="beslishulp-title" class="beslishulp__title">Beslishulp AI-verordening</h2>
             <p class="beslishulp__subtitle">
@@ -41,11 +41,14 @@
 
       <div class="beslishulp__body">
 
-        <p v-if="loading" class="rvo-text beslishulp__status">Beslishulp laden…</p>
+        <nldd-text color="inherit" class="beslishulp__status" v-if="loading">Beslishulp laden…</nldd-text>
 
-        <div v-else-if="loadError" class="rvo-alert rvo-alert--error rvo-alert--padding-md" role="alert">
-          <div class="rvo-alert__container">{{ loadError }}</div>
-        </div>
+        <nldd-banner
+          variant="critical"
+          v-else-if="loadError"
+          role="alert"
+          :text="loadError"
+        />
 
         <!-- ---------------- Question ---------------- -->
         <template v-else-if="position?.kind === 'question'">
@@ -74,11 +77,11 @@
             </li>
           </ul>
 
-          <details v-if="relevantDefinitions.length > 0" class="rvo-expandable-content rvo-expandable-content--subtle beslishulp__details">
-            <summary class="rvo-expandable-content__summary rvo-text rvo-text--sm">
+          <details v-if="relevantDefinitions.length > 0" class="invulhulp-disclosure beslishulp__details">
+            <summary class="invulhulp-text--sm">
               Begrippen in deze vraag ({{ relevantDefinitions.length }})
             </summary>
-            <div class="rvo-expandable-content__details">
+            <div class="invulhulp-disclosure__details">
               <dl class="beslishulp__definitions">
                 <template v-for="def in relevantDefinitions" :key="def.term">
                   <dt>{{ def.term }}</dt>
@@ -88,14 +91,14 @@
             </div>
           </details>
 
-          <details v-if="position.question.sources.length > 0" class="rvo-expandable-content rvo-expandable-content--subtle beslishulp__details">
-            <summary class="rvo-expandable-content__summary rvo-text rvo-text--sm">
+          <details v-if="position.question.sources.length > 0" class="invulhulp-disclosure beslishulp__details">
+            <summary class="invulhulp-text--sm">
               Bronnen bij deze vraag ({{ position.question.sources.length }})
             </summary>
-            <div class="rvo-expandable-content__details">
-              <ul class="rvo-ul beslishulp__sources">
+            <div class="invulhulp-disclosure__details">
+              <ul class="beslishulp__sources">
                 <li v-for="src in position.question.sources" :key="src.url">
-                  <a class="rvo-link" :href="src.url" target="_blank" rel="noopener noreferrer">{{ src.source }}</a>
+                  <nldd-link :href="src.url" target="_blank" rel="noopener noreferrer">{{ src.source }}</nldd-link>
                 </li>
               </ul>
             </div>
@@ -104,14 +107,14 @@
 
         <!-- ---------------- Conclusion ---------------- -->
         <template v-else-if="position?.kind === 'conclusion'">
-          <div class="rvo-alert rvo-alert--padding-md beslishulp__verdict" :class="`rvo-alert--${alertModifier}`">
-            <div class="rvo-alert__container">
+          <nldd-banner class="beslishulp__verdict" :variant="alertVariant">
+            <div class="beslishulp__verdict-row">
               <strong>{{ verdictLine }}</strong>
               <span v-if="savedNotice" class="beslishulp__saved">{{ savedNotice }}</span>
             </div>
-          </div>
+          </nldd-banner>
 
-          <p class="rvo-text beslishulp__conclusion">{{ position.conclusion.conclusion }}</p>
+          <nldd-text class="beslishulp__conclusion">{{ position.conclusion.conclusion }}</nldd-text>
 
           <section v-if="position.conclusion.obligation" class="beslishulp__obligation-block">
             <h4 class="beslishulp__section-title">Wat betekent dit voor jou?</h4>
@@ -126,16 +129,16 @@
             </ul>
           </section>
 
-          <details class="rvo-expandable-content rvo-expandable-content--subtle beslishulp__details">
-            <summary class="rvo-expandable-content__summary rvo-text rvo-text--sm">
+          <details class="invulhulp-disclosure beslishulp__details">
+            <summary class="invulhulp-text--sm">
               Jouw antwoorden ({{ steps.length }})
             </summary>
-            <div class="rvo-expandable-content__details">
+            <div class="invulhulp-disclosure__details">
               <ol class="beslishulp__trail">
                 <li v-for="(step, index) in steps" :key="index">
                   <span class="beslishulp__trail-q">{{ questionTextFor(step.questionId) }}</span>
                   <span class="beslishulp__trail-a">{{ step.answerLabel }}</span>
-                  <button type="button" class="rvo-link beslishulp__trail-back" @click="rewindTo(index)">
+                  <button type="button" class="invulhulp-linkbutton beslishulp__trail-back" @click="rewindTo(index)">
                     Terug naar deze vraag
                   </button>
                 </li>
@@ -143,14 +146,14 @@
             </div>
           </details>
 
-          <details v-if="position.conclusion.sources.length > 0" class="rvo-expandable-content rvo-expandable-content--subtle beslishulp__details">
-            <summary class="rvo-expandable-content__summary rvo-text rvo-text--sm">
+          <details v-if="position.conclusion.sources.length > 0" class="invulhulp-disclosure beslishulp__details">
+            <summary class="invulhulp-text--sm">
               Bronnen bij deze conclusie ({{ position.conclusion.sources.length }})
             </summary>
-            <div class="rvo-expandable-content__details">
-              <ul class="rvo-ul beslishulp__sources">
+            <div class="invulhulp-disclosure__details">
+              <ul class="beslishulp__sources">
                 <li v-for="src in position.conclusion.sources" :key="src.url">
-                  <a class="rvo-link" :href="src.url" target="_blank" rel="noopener noreferrer">{{ src.source }}</a>
+                  <nldd-link :href="src.url" target="_blank" rel="noopener noreferrer">{{ src.source }}</nldd-link>
                 </li>
               </ul>
             </div>
@@ -160,51 +163,50 @@
         <!-- ---------------- Dead end ----------------
              Upstream writes no fallback redirect, so a combination of answers can
              in principle match no route. Say so plainly instead of freezing. -->
-        <div v-else-if="position?.kind === 'deadEnd'" class="rvo-alert rvo-alert--warning rvo-alert--padding-md" role="alert">
-          <!-- One element inside the container: rvo-alert lays its children out in a row. -->
-          <div class="rvo-alert__container">
+                <nldd-banner
+                  variant="warning"
+                  v-else-if="position?.kind === 'deadEnd'"
+                  role="alert"
+                >
             <div>
               <strong>Geen vervolgvraag gevonden.</strong><br />
               Deze combinatie van antwoorden leidt in de beslisboom niet naar een vervolgvraag of conclusie.
               Ga een stap terug en kies een ander antwoord, of raadpleeg
-              <a class="rvo-link" href="mailto:ai-verordening@minbzk.nl">ai-verordening@minbzk.nl</a>.
+              <nldd-link href="mailto:ai-verordening@minbzk.nl">ai-verordening@minbzk.nl</nldd-link>.
             </div>
-          </div>
-        </div>
+        </nldd-banner>
       </div>
 
       <footer class="beslishulp__footer">
         <div class="beslishulp__footer-actions">
-          <button
+          <nldd-button
+            variant="neutral-transparent"
+            size="sm"
+            text="← Vorige vraag"
             v-if="steps.length > 0"
-            type="button"
-            class="rvo-button rvo-button--tertiary rvo-button--size-sm"
             @click="back"
-          >
-            ← Vorige vraag
-          </button>
-          <button
+          />
+          <nldd-button
+            variant="neutral-transparent"
+            size="sm"
+            text="Opnieuw beginnen"
             v-if="steps.length > 0"
-            type="button"
-            class="rvo-button rvo-button--tertiary rvo-button--size-sm"
             @click="restart"
-          >
-            Opnieuw beginnen
-          </button>
-          <button
+          />
+          <nldd-button
+            variant="primary"
+            size="sm"
+            class="beslishulp__done"
+            text="Sluiten"
             v-if="position?.kind === 'conclusion'"
-            type="button"
-            class="rvo-button rvo-button--primary rvo-button--size-sm beslishulp__done"
             @click="close"
-          >
-            Sluiten
-          </button>
+          />
         </div>
         <p class="beslishulp__credit">
           Beslisboom:
-          <a class="rvo-link" :href="tree?.source.repository" target="_blank" rel="noopener noreferrer">
+          <nldd-link :href="tree?.source.repository" target="_blank" rel="noopener noreferrer">
             Beslishulp AI-verordening
-          </a>
+          </nldd-link>
           — AI Validatieteam, MinBZK (EUPL-1.2). Geen juridisch advies.
         </p>
       </footer>
@@ -274,13 +276,13 @@ const verdictLine = computed(() =>
   ),
 )
 
-const alertModifier = computed(() => {
+const alertVariant = computed(() => {
   const conclusionId = position.value?.kind === 'conclusion' ? position.value.conclusion.conclusionId : null
-  if (isOutOfScope(state.value?.labels ?? new Set(), conclusionId)) return 'info'
+  if (isOutOfScope(state.value?.labels ?? new Set(), conclusionId)) return 'accent'
   switch (riskLevelFor(state.value?.labels ?? new Set())) {
-    case 'onaanvaardbaar': return 'error'
+    case 'onaanvaardbaar': return 'critical'
     case 'hoog': return 'warning'
-    case 'beperkt': return 'info'
+    case 'beperkt': return 'accent'
     default: return 'success'
   }
 })
@@ -432,8 +434,8 @@ defineExpose({ open })
 }
 
 .beslishulp__container {
-  background: var(--rvo-color-wit);
-  border-radius: var(--rvo-border-radius-lg);
+  background: var(--semantics-surfaces-base-background-color);
+  border-radius: var(--primitives-corner-radius-lg);
   box-shadow: 0 0 1.5em 0 rgb(0 0 0 / 35%);
   display: flex;
   flex-direction: column;
@@ -446,39 +448,32 @@ defineExpose({ open })
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: var(--rvo-space-sm);
-  padding: var(--rvo-space-lg) var(--rvo-space-lg) var(--rvo-space-md);
-  background: linear-gradient(135deg, var(--rvo-color-lintblauw) 0%, #1e3a6d 60%, #2a4a80 100%);
-  color: var(--rvo-color-wit);
+  gap: var(--primitives-space-12);
+  padding: var(--primitives-space-24) var(--primitives-space-24) var(--primitives-space-16);
+  background: linear-gradient(135deg, var(--semantics-content-accent-color) 0%, #1e3a6d 60%, #2a4a80 100%);
+  color: var(--semantics-surfaces-base-background-color);
 }
 
 .beslishulp__brand {
   display: flex;
   align-items: flex-start;
-  gap: var(--rvo-space-sm);
+  gap: var(--primitives-space-12);
 }
 
 .beslishulp__brand-icon {
-  inline-size: 2rem;
-  block-size: 2rem;
   flex-shrink: 0;
-  background-color: currentColor;
-  /* Static stylesheet url(): a runtime url() renders as a white square in the
-     production build (see the NLDS icon-mask note in DossierDetail.vue). */
-  -webkit-mask: url('@nl-rvo/assets/icons/gebruiksvoorwerpen/weegschaal.svg') center / contain no-repeat;
-  mask: url('@nl-rvo/assets/icons/gebruiksvoorwerpen/weegschaal.svg') center / contain no-repeat;
 }
 
 .beslishulp__title {
   margin: 0;
-  font-size: var(--rvo-font-size-xl);
-  font-weight: var(--rvo-font-weight-bold);
-  color: var(--rvo-color-wit);
+  font-size: var(--primitives-font-size-300);
+  font-weight: var(--primitives-font-weight-body-bold);
+  color: var(--semantics-surfaces-base-background-color);
 }
 
 .beslishulp__subtitle {
-  margin: var(--rvo-space-3xs) 0 0;
-  font-size: var(--rvo-font-size-sm);
+  margin: var(--primitives-space-2) 0 0;
+  font-size: var(--primitives-font-size-90);
   color: rgb(255 255 255 / 0.8);
   max-inline-size: 52ch;
 }
@@ -490,11 +485,11 @@ defineExpose({ open })
   line-height: 1;
   cursor: pointer;
   color: rgb(255 255 255 / 0.8);
-  padding: 0 var(--rvo-space-3xs);
+  padding: 0 var(--primitives-space-2);
 }
 
 .beslishulp__close:hover {
-  color: var(--rvo-color-wit);
+  color: var(--semantics-surfaces-base-background-color);
 }
 
 /* --- Phase rail --- */
@@ -504,38 +499,38 @@ defineExpose({ open })
   list-style: none;
   margin: 0;
   padding: 0;
-  background: var(--rvo-color-lichtblauw-150);
+  background: var(--semantics-surfaces-tinted-background-color);
   border-block-end: 1px solid var(--invulhulp-color-border);
 }
 
 .beslishulp__phase {
   flex: 1;
-  padding: var(--rvo-space-2xs) var(--rvo-space-sm);
-  font-size: var(--rvo-font-size-2xs, 0.75rem);
-  font-weight: var(--rvo-font-weight-semibold);
+  padding: var(--primitives-space-4) var(--primitives-space-12);
+  font-size: var(--primitives-font-size-70, 0.75rem);
+  font-weight: var(--primitives-font-weight-body-semi-bold);
   color: var(--invulhulp-color-text-subtle);
   text-align: center;
   border-block-end: 3px solid transparent;
 }
 
 .beslishulp__phase--done {
-  color: var(--rvo-color-lintblauw);
-  border-block-end-color: var(--rvo-color-lichtblauw-300);
+  color: var(--semantics-content-accent-color);
+  border-block-end-color: var(--semantics-dividers-color);
 }
 
 .beslishulp__phase--active {
-  color: var(--rvo-color-lintblauw);
-  background: var(--rvo-color-wit);
-  border-block-end-color: var(--rvo-color-lintblauw);
+  color: var(--semantics-content-accent-color);
+  background: var(--semantics-surfaces-base-background-color);
+  border-block-end-color: var(--semantics-content-accent-color);
 }
 
 /* --- Body --- */
 .beslishulp__body {
-  padding: var(--rvo-space-lg);
+  padding: var(--primitives-space-24);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--rvo-space-md);
+  gap: var(--primitives-space-16);
 }
 
 .beslishulp__status {
@@ -546,9 +541,9 @@ defineExpose({ open })
 .beslishulp__kicker {
   display: flex;
   align-items: center;
-  gap: var(--rvo-space-2xs);
+  gap: var(--primitives-space-4);
   margin: 0;
-  font-size: var(--rvo-font-size-2xs, 0.75rem);
+  font-size: var(--primitives-font-size-70, 0.75rem);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--invulhulp-color-text-subtle);
@@ -562,31 +557,31 @@ defineExpose({ open })
 
 .beslishulp__question {
   margin: 0;
-  font-size: var(--rvo-font-size-lg);
-  font-weight: var(--rvo-font-weight-bold);
-  line-height: var(--rvo-line-height-md);
-  color: var(--rvo-color-lintblauw);
+  font-size: var(--primitives-font-size-200);
+  font-weight: var(--primitives-font-weight-body-bold);
+  line-height: var(--primitives-line-height-snug);
+  color: var(--semantics-content-accent-color);
 }
 
 .beslishulp__explanation,
 .beslishulp__obligation {
-  font-size: var(--rvo-font-size-sm);
-  line-height: var(--rvo-line-height-lg);
+  font-size: var(--primitives-font-size-90);
+  line-height: var(--primitives-line-height-loose);
   color: var(--invulhulp-color-text-subtle);
   max-block-size: 22rem;
   /* Scroll internally instead of being squeezed to a clipped single line by the
      flex column when the answer list is tall. */
   flex-shrink: 0;
   overflow-y: auto;
-  padding: var(--rvo-space-sm) var(--rvo-space-md);
-  background: var(--rvo-color-lichtblauw-150);
-  border-inline-start: 3px solid var(--rvo-color-lichtblauw-300);
-  border-radius: var(--rvo-border-radius-sm);
+  padding: var(--primitives-space-12) var(--primitives-space-16);
+  background: var(--semantics-surfaces-tinted-background-color);
+  border-inline-start: 3px solid var(--semantics-dividers-color);
+  border-radius: var(--primitives-corner-radius-sm);
 }
 
 .beslishulp__explanation :deep(strong),
 .beslishulp__obligation :deep(strong) {
-  color: var(--rvo-color-zwart);
+  color: var(--semantics-content-color);
 }
 
 /* --- Answers --- */
@@ -596,7 +591,7 @@ defineExpose({ open })
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--rvo-space-2xs);
+  gap: var(--primitives-space-4);
   /* Never shrink away under the explanation: the options are the point of the screen. */
   flex-shrink: 0;
 }
@@ -617,41 +612,41 @@ defineExpose({ open })
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--rvo-space-sm);
+  gap: var(--primitives-space-12);
   text-align: start;
   font: inherit;
-  font-size: var(--rvo-font-size-md);
+  font-size: var(--primitives-font-size-100);
   cursor: pointer;
-  padding: var(--rvo-space-sm) var(--rvo-space-md);
-  background: var(--rvo-color-wit);
+  padding: var(--primitives-space-12) var(--primitives-space-16);
+  background: var(--semantics-surfaces-base-background-color);
   border: 1px solid var(--invulhulp-color-border);
-  border-radius: var(--rvo-border-radius-md);
-  color: var(--rvo-color-zwart);
+  border-radius: var(--primitives-corner-radius-md);
+  color: var(--semantics-content-color);
   transition: border-color var(--invulhulp-duration-instant), background var(--invulhulp-duration-instant), transform var(--invulhulp-duration-instant);
 }
 
 .beslishulp__answer:hover {
-  border-color: var(--rvo-color-lintblauw);
-  background: var(--rvo-color-lichtblauw-150);
+  border-color: var(--semantics-content-accent-color);
+  background: var(--semantics-surfaces-tinted-background-color);
   transform: translateX(2px);
 }
 
 .beslishulp__answer-arrow {
-  color: var(--rvo-color-lintblauw);
+  color: var(--semantics-content-accent-color);
   flex-shrink: 0;
 }
 
 /* --- Conclusion --- */
-.beslishulp__verdict .rvo-alert__container {
+.beslishulp__verdict-row {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: var(--rvo-space-sm);
+  gap: var(--primitives-space-12);
   flex-wrap: wrap;
 }
 
 .beslishulp__saved {
-  font-size: var(--rvo-font-size-2xs, 0.75rem);
+  font-size: var(--primitives-font-size-70, 0.75rem);
   color: var(--invulhulp-color-text-subtle);
 }
 
@@ -660,28 +655,28 @@ defineExpose({ open })
 }
 
 .beslishulp__section-title {
-  margin: 0 0 var(--rvo-space-2xs);
-  font-size: var(--rvo-font-size-md);
-  font-weight: var(--rvo-font-weight-bold);
-  color: var(--rvo-color-lintblauw);
+  margin: 0 0 var(--primitives-space-4);
+  font-size: var(--primitives-font-size-100);
+  font-weight: var(--primitives-font-weight-body-bold);
+  color: var(--semantics-content-accent-color);
 }
 
 .beslishulp__labels {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--rvo-space-2xs);
+  gap: var(--primitives-space-4);
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .beslishulp__label {
-  font-size: var(--rvo-font-size-2xs, 0.75rem);
-  padding: 0 var(--rvo-space-2xs);
-  background: var(--rvo-color-lichtblauw-150);
-  border: 1px solid var(--rvo-color-lichtblauw-300);
-  border-radius: var(--rvo-border-radius-md);
-  color: var(--rvo-color-lintblauw);
+  font-size: var(--primitives-font-size-70, 0.75rem);
+  padding: 0 var(--primitives-space-4);
+  background: var(--semantics-surfaces-tinted-background-color);
+  border: 1px solid var(--semantics-dividers-color);
+  border-radius: var(--primitives-corner-radius-md);
+  color: var(--semantics-content-accent-color);
 }
 
 /* --- Trail & sources --- */
@@ -691,31 +686,31 @@ defineExpose({ open })
 
 .beslishulp__definitions {
   margin: 0;
-  font-size: var(--rvo-font-size-sm);
+  font-size: var(--primitives-font-size-90);
 }
 
 .beslishulp__definitions dt {
-  font-weight: var(--rvo-font-weight-semibold);
-  color: var(--rvo-color-lintblauw);
+  font-weight: var(--primitives-font-weight-body-semi-bold);
+  color: var(--semantics-content-accent-color);
 }
 
 .beslishulp__definitions dd {
-  margin: 0 0 var(--rvo-space-xs);
+  margin: 0 0 var(--primitives-space-8);
   color: var(--invulhulp-color-text-subtle);
 }
 
 .beslishulp__sources {
   margin: 0;
-  font-size: var(--rvo-font-size-sm);
+  font-size: var(--primitives-font-size-90);
 }
 
 .beslishulp__trail {
   margin: 0;
-  padding-inline-start: var(--rvo-space-lg);
-  font-size: var(--rvo-font-size-sm);
+  padding-inline-start: var(--primitives-space-24);
+  font-size: var(--primitives-font-size-90);
   display: flex;
   flex-direction: column;
-  gap: var(--rvo-space-2xs);
+  gap: var(--primitives-space-4);
 }
 
 .beslishulp__trail-q {
@@ -724,35 +719,35 @@ defineExpose({ open })
 }
 
 .beslishulp__trail-a {
-  font-weight: var(--rvo-font-weight-semibold);
+  font-weight: var(--primitives-font-weight-body-semi-bold);
 }
 
 .beslishulp__trail-back {
   background: none;
   border: 0;
   padding: 0;
-  margin-inline-start: var(--rvo-space-xs);
+  margin-inline-start: var(--primitives-space-8);
   font: inherit;
-  font-size: var(--rvo-font-size-2xs, 0.75rem);
+  font-size: var(--primitives-font-size-70, 0.75rem);
   cursor: pointer;
-  color: var(--rvo-color-lintblauw);
+  color: var(--semantics-content-accent-color);
   text-decoration: underline;
 }
 
 /* --- Footer --- */
 .beslishulp__footer {
-  padding: var(--rvo-space-sm) var(--rvo-space-lg) var(--rvo-space-md);
+  padding: var(--primitives-space-12) var(--primitives-space-24) var(--primitives-space-16);
   border-block-start: 1px solid var(--invulhulp-color-border);
-  background: var(--rvo-color-lichtblauw-150);
+  background: var(--semantics-surfaces-tinted-background-color);
   display: flex;
   flex-direction: column;
-  gap: var(--rvo-space-2xs);
+  gap: var(--primitives-space-4);
 }
 
 .beslishulp__footer-actions {
   display: flex;
   align-items: center;
-  gap: var(--rvo-space-xs);
+  gap: var(--primitives-space-8);
   flex-wrap: wrap;
 }
 
@@ -762,7 +757,7 @@ defineExpose({ open })
 
 .beslishulp__credit {
   margin: 0;
-  font-size: var(--rvo-font-size-2xs, 0.75rem);
+  font-size: var(--primitives-font-size-70, 0.75rem);
   color: var(--invulhulp-color-text-subtle);
 }
 </style>
